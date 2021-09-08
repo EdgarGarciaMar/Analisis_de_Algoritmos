@@ -49,7 +49,7 @@ void c3()
     c = malloc(sizeof(int *) * (n * n));
 
     //*************************
-    for (i = 1; i < n; i++)
+    /*for (i = 1; i < n; i++)
     {
         for (j = 1; j < n; j++)
         {
@@ -59,8 +59,41 @@ void c3()
                 c[i, j] = c[i, j] + a[i, k] * b[k, j];
             }
         }
-    }
+    }*/
     //*******************************
+    printf("Espacio:%d\n", n_espacio);
+    printf("Tiempo:%d\n", n_tiempo);
+}
+
+void c4()
+{
+    int n = scanearn();
+    int n_espacio = 0, n_tiempo = 0;
+
+    int anterior, aux, actual;
+    n_espacio += 3;
+    //****************************************
+    anterior = 1;
+    n_tiempo++;
+    actual = 1;
+    n_tiempo++;
+    while (n > 2)
+    {
+        n_tiempo++; // verdad
+        aux = anterior + actual;
+        n_tiempo += 2;
+        anterior = actual;
+        n_tiempo++;
+        actual = aux;
+        n_tiempo++;
+        n = n - 1;
+        n_tiempo += 2;
+    }
+    n_tiempo++; // falso
+    //*******************************************
+
+    printf("Espacio:%d\n", n_espacio);
+    printf("Tiempo:%d\n", n_tiempo);
 }
 void menu()
 {
@@ -88,10 +121,10 @@ void menu()
             c2();
             break;
         case 3:
-
+            c3();
             break;
         case 4:
-
+            c4();
             break;
         case 5:
 
