@@ -11,7 +11,35 @@ int scanearn()
 
 void c1()
 {
-    printf("hola");
+    int n = scanearn();
+    int n_espacio = 0, n_tiempo = 0;
+
+    //almacenamiento
+    int i, j, temp, *A;
+    n_espacio += 4;
+    n_espacio = n_espacio + n;
+    A = malloc(sizeof(int *) * (n));
+
+    //********************************
+    for (i = 1, n_tiempo++; i < n; n_tiempo++, i++)
+    {
+        n_tiempo++; //verdad1
+        for (j = n, n_tiempo++; j > 1; j /= 2, n_tiempo++)
+        {
+            n_tiempo++; //verdad2
+            temp = A[j];
+            n_tiempo++;
+            A[j] = A[j + 1];
+            n_tiempo += 2;
+            A[j + 1] = temp;
+            n_tiempo += 2;
+        }
+        n_tiempo++; //falso2
+    }
+    n_tiempo++; //falso1
+    //*******************************
+    printf("Espacio:%d\n", n_espacio);
+    printf("Tiempo:%d\n", n_tiempo);
 }
 void c2()
 {
@@ -44,7 +72,7 @@ void c3()
     int n_espacio = 0, n_tiempo = 0;
 
     int i, j, k, **a, **b, **c;
-    n_espacio += 3;
+    n_espacio += 4;
     n_espacio = n_espacio + (3 * n * n);
     //Asignacion de espacio de matriz 2x2
     a = malloc(sizeof(int *) * (n));
@@ -89,7 +117,7 @@ void c4()
     int n_espacio = 0, n_tiempo = 0;
 
     int anterior, aux, actual;
-    n_espacio += 3;
+    n_espacio += 4;
     //****************************************
     anterior = 1;
     n_tiempo++;
@@ -122,7 +150,7 @@ void c5()
     int i, j, k, *s, *s2;
     s = malloc(sizeof(int *) * (n));
     s2 = malloc(sizeof(int *) * (n));
-    n_espacio += 3;
+    n_espacio += 4;
     n_espacio = n_espacio + (2 * n);
     //*******************************************
     for (i = n - 1, j = 0, n_tiempo += 2; i >= 0; i--, j++, n_tiempo += 2)
