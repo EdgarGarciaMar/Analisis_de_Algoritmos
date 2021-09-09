@@ -202,7 +202,40 @@ void c6()
 }
 void c7()
 {
-    printf("hola");
+    int n = scanearn();
+    int n_espacio = 0, n_tiempo = 0;
+
+    //almacenamiento
+    int i, j, temp, *lista;
+    n_espacio += 4;
+    lista = malloc(sizeof(int *) * (n));
+    n_espacio += n;
+
+    //******************************************
+    for (i = 1, n_tiempo++; i < n; n_tiempo++, i++)
+    {
+        n_tiempo++; //verdadero1
+        for (j = 0, n_tiempo++; j < n - 1; n_tiempo++, j++)
+        {
+            n_tiempo++; //verdadero2
+            if (lista[j] > lista[j + 1])
+            {
+                n_tiempo++; //verdaderoif
+                temp = lista[j];
+                n_tiempo++;
+                lista[j] = lista[j + 1];
+                n_tiempo += 2;
+                lista[j + 1] = temp;
+                n_tiempo += 2;
+            }
+            n_tiempo++; //falsoif
+        }
+        n_tiempo++; //falso2
+    }
+    n_tiempo++; //falso1
+    //*****************************************
+    printf("Espacio :%d\n", n_espacio);
+    printf("Tiempo :%d\n", n_tiempo);
 }
 void menu()
 {
