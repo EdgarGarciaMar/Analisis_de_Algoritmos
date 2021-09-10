@@ -1,17 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int scanearn()
+void c1(int n)
 {
-    int n;
-    puts("Ingresa n:");
-    scanf("%d", &n);
-    return n;
-}
 
-void c1()
-{
-    int n = scanearn();
     int n_espacio = 0, n_tiempo = 0;
 
     //almacenamiento
@@ -41,9 +33,8 @@ void c1()
     printf("Espacio:%d\n", n_espacio);
     printf("Tiempo:%d\n", n_tiempo);
 }
-void c2()
+void c2(int n)
 {
-    int n = scanearn();
     int n_espacio = 0, n_tiempo = 0;
 
     int polinomio, i, z = 0, *A;
@@ -66,9 +57,9 @@ void c2()
     printf("Tiempo:%d\n", n_tiempo);
 }
 
-void c3()
+void c3(int n)
 {
-    int n = scanearn();
+
     int n_espacio = 0, n_tiempo = 0;
 
     int i, j, k, **a, **b, **c;
@@ -111,9 +102,9 @@ void c3()
     printf("Tiempo:%d\n", n_tiempo);
 }
 
-void c4()
+void c4(int n)
 {
-    int n = scanearn();
+
     int n_espacio = 0, n_tiempo = 0;
 
     int anterior, aux, actual;
@@ -141,9 +132,8 @@ void c4()
     printf("Espacio:%d\n", n_espacio);
     printf("Tiempo:%d\n", n_tiempo);
 }
-void c5()
+void c5(int n)
 {
-    int n = scanearn();
     int n_espacio = 0, n_tiempo = 0;
 
     //
@@ -200,9 +190,8 @@ void c6()
     printf("Espacio sin n:%d\n", n_espacio);
     printf("Tiempo sin n:%d\n", n_tiempo);
 }
-void c7()
+void c7(int n)
 {
-    int n = scanearn();
     int n_espacio = 0, n_tiempo = 0;
 
     //almacenamiento
@@ -237,8 +226,29 @@ void c7()
     printf("Espacio :%d\n", n_espacio);
     printf("Tiempo :%d\n", n_tiempo);
 }
+
 void menu()
 {
+    int n[] = {-1,
+               0,
+               1,
+               2,
+               3,
+               5,
+               15,
+               20,
+               100,
+               409,
+               500,
+               593,
+               1000,
+               1471,
+               1500,
+               2801,
+               3000,
+               5000,
+               10000,
+               20000};
     int opc;
     for (;;)
     {
@@ -257,25 +267,49 @@ void menu()
         switch (opc)
         {
         case 1:
-            c1();
+            for (int i = 0; i < 20; i++)
+            {
+                printf("\n p=%d \n", i);
+                c1(n[i]);
+            }
             break;
         case 2:
-            c2();
+            for (int i = 0; i < 20; i++)
+            {
+                printf("\n p=%d \n", i);
+                c2(n[i]);
+            }
             break;
         case 3:
-            c3();
+            for (int i = 0; i < 20; i++)
+            {
+                printf("\n p=%d \n", i);
+                c3(n[i]);
+            }
             break;
         case 4:
-            c4();
+            for (int i = 0; i < 20; i++)
+            {
+                printf("\n p=%d \n", i);
+                c4(n[i]);
+            }
             break;
         case 5:
-            c5();
+            for (int i = 0; i < 20; i++)
+            {
+                printf("\n p=%d \n", i);
+                c5(n[i]);
+            }
             break;
         case 6:
             c6();
             break;
         case 7:
-            c7();
+            for (int i = 0; i < 20; i++)
+            {
+                printf("\n p=%d \n", i);
+                c7(n[i]);
+            }
             break;
         case 8:
             exit(0);
