@@ -83,12 +83,19 @@ La función uswtime se puede emplear para medir los tiempos de ejecución de det
 
 	CPU/Wall = (user + sys) / real x 100 %*/
 
-//Metodos de ordenamiento
+//*************************Metodos de ordenamiento********************************************
+
 /*
 Burbuja Simple:
-Esta función recive como argumentos el arreglo a ordenar  y el tamaño del arreglo que es n, ademas n es de
+Esta función recibe como argumentos el arreglo a ordenar y el tamaño del arreglo que es n, ademas n es de
 igual forma el tamaño del problema.
-Variables
+Variables:
+-i,j son de los bucles
+-aux es el auxiliar para hacer el ordenamiento
+
+El algoritmo consiste de 2 ciclos for, el primero va de 0 a n-2, el segundo va de 0 a n-1 y en su interior
+se encuentra un if el cual hace las comprobaciones de cual es el numero menor, para regresar el arreglo 
+ordenado del número menor al mayor.
 */
 void BurbujaSimple(int A[], int n)
 {
@@ -107,7 +114,18 @@ void BurbujaSimple(int A[], int n)
         }
     }
 }
+/*
+Burbuja optimizada 1:
+Esta función recibe como argumentos el arreglo a ordenar y el tamaño del arreglo que es n, ademas n es de
+igual forma el tamaño del problema.
+Variables:
+-i,j para los bucles
+-aux variable auxiliar en los cambios en el ordenamiento.
 
+El algoritmo de igual forma consiste en dos ciclos for, el primero va de 0 a n-1, el segundo va de 0 a (n-1)
+- el valor del iterador i, lo cual hace reducir el numero de ciclos, este algoritmo de igual forma nos devuelve
+el arreglo ordenado del número menor al mayor.
+*/
 void Burbujaop1(int A[], int n)
 {
     int aux;
@@ -124,7 +142,19 @@ void Burbujaop1(int A[], int n)
         }
     }
 }
+/*
+Burbuja optimizada 2:
+Esta función recibe como argumentos el arreglo a ordenar y el tamaño del arreglo que es n, ademas n es de
+igual forma el tamaño del problema.
+Variables:
+-i,j para los bucles
+-aux variable auxiliar en los cambios en el ordenamiento.
+cambios variable que actua como bandera indica cuando ya no se cumple el for para terminar el while
 
+El algoritmo consiste de  un  ciclo while que se ejecutara mientras i sea menor o igual a n-2 y cambios diferente
+de N, luego se tiene un ciclo for desde 0  hasta (n-1)-i, después se evaluaa un if que busca el numero mayor, por lo
+que devuelve el arreglo ordenado de mayor a menor.
+*/
 void Burbujaop2(int A[], int n)
 {
     int aux;

@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 	//Si no se introducen exactamente 2 argumentos (Cadena de ejecución y cadena=n)
 	if (argc != 3)
 	{
-		printf("\nIndique el tamanio del algoritmo - Ejemplo: [user@equipo]$ %s 100\n", argv[0]);
+		printf("\nIndique el tamanio del algoritmo - Ejemplo: [user@equipo]$ %s 100 1\n", argv[0]);
 		exit(1);
 	}
 	//Tomar el segundo argumento como tamaño del algoritmo
@@ -123,11 +123,11 @@ int main(int argc, char *argv[])
 	printf("CPU/Wall   %.10f %% \n", 100.0 * (utime1 - utime0 + stime1 - stime0) / (wtime1 - wtime0));
 	printf("\n");
 	//******************************************************************
-	//*************Imprimir el arreglo ordenado
+	//*************Imprimir el arreglo ordenado*********************************
 	printf("\n opc = %d , Los numeros ordenados son:\n", opc);
 	for (int a = 0; a < n; a++)
 	{
-		printf("[%d]=%d\n", a, A[a]);
+		printf("[%d]= %d\n", a, A[a]);
 	}
 	//Terminar programa normalmente
 	exit(0);
