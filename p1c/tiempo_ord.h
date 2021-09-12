@@ -47,12 +47,22 @@ La función uswtime se puede emplear para medir los tiempos de ejecución de det
 	CPU/Wall = (user + sys) / real x 100 %*/
 
 //Funciones de Ordenamiento
+/*En este apartado se declaran las funciones de ordenamiento que seran utilizadas en el main
+la descripción de estas funciones se encuentra en  el archivo de implementación tiempo_ord.c
+*/
 void BurbujaSimple(int A[], int n);
 
 void Burbujaop1(int A[], int n);
 
 void Burbujaop2(int A[], int n);
 
-void insersion(int A[], int n);
+void insercion(int *, int);
 
-void seleccion(int A[], int n);
+void seleccion(int *, int);
+
+void MergeSort(int *A, int p, int r);
+void Merge(int *A, int p, int q, int r);
+
+void QuickSort(int *A, int p, int r);
+int Pivot(int *A, int p, int r);
+void Intercambiar(int *A, int i, int j);

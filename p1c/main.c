@@ -71,30 +71,57 @@ int main(int argc, char *argv[])
 	//******************************************************************
 	switch (opc)
 	{
-	case 1:
+	case 1: //burbuja Simple
 		uswtime(&utime0, &stime0, &wtime0);
 		BurbujaSimple(A, n);
 		uswtime(&utime1, &stime1, &wtime1);
+		printf("\n**********Burbuja Simple***********\n");
 		break;
-	case 2:
+	case 2: //Burbuja op1
 		uswtime(&utime0, &stime0, &wtime0);
 		Burbujaop1(A, n);
 		uswtime(&utime1, &stime1, &wtime1);
+		printf("\n**********Burbuja optimizada 1***********\n");
 		break;
-	case 3:
+	case 3: //burbuja op2
 		uswtime(&utime0, &stime0, &wtime0);
 		Burbujaop2(A, n);
 		uswtime(&utime1, &stime1, &wtime1);
+		printf("\n**********Burbuja optimizada 2***********\n");
 		break;
-	case 4:
+	case 4: //insercion
 		uswtime(&utime0, &stime0, &wtime0);
-		insersion(A, n);
+		insercion(A, n);
 		uswtime(&utime1, &stime1, &wtime1);
+		printf("\n**********Insercion***********\n");
 		break;
-	case 5:
+	case 5: //seleccion
 		uswtime(&utime0, &stime0, &wtime0);
 		seleccion(A, n);
 		uswtime(&utime1, &stime1, &wtime1);
+		printf("\n**********Seleccion***********\n");
+		break;
+	case 6: //shell
+		//uswtime(&utime0, &stime0, &wtime0);
+		printf("\n**********Shell***********\n");
+		//uswtime(&utime1, &stime1, &wtime1);
+		break;
+	case 7: //Árbol binario
+		//uswtime(&utime0, &stime0, &wtime0);
+		printf("\n**********Arbol binario***********\n");
+		//uswtime(&utime1, &stime1, &wtime1);
+		break;
+	case 8: //ordenamiento por mezcla
+		uswtime(&utime0, &stime0, &wtime0);
+		MergeSort(A, 0, n - 1);
+		uswtime(&utime1, &stime1, &wtime1);
+		printf("\n**********Ordenamiento por mezcla***********\n");
+		break;
+	case 9: //ordenamiento rapido
+		uswtime(&utime0, &stime0, &wtime0);
+		QuickSort(A, 0, n - 1);
+		uswtime(&utime1, &stime1, &wtime1);
+		printf("\n**********Ordenamiento rapido***********\n");
 		break;
 	default:
 		printf("\n Error opc.\n");
