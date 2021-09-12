@@ -86,6 +86,16 @@ int main(int argc, char *argv[])
 		Burbujaop2(A, n);
 		uswtime(&utime1, &stime1, &wtime1);
 		break;
+	case 4:
+		uswtime(&utime0, &stime0, &wtime0);
+		insersion(A, n);
+		uswtime(&utime1, &stime1, &wtime1);
+		break;
+	case 5:
+		uswtime(&utime0, &stime0, &wtime0);
+		seleccion(A, n);
+		uswtime(&utime1, &stime1, &wtime1);
+		break;
 	default:
 		printf("\n Error opc.\n");
 		exit(1);
