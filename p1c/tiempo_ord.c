@@ -18,6 +18,7 @@
 #include "tiempo_ord.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 //*****************************************************************
 //uswtime (Definición)
 //*****************************************************************
@@ -222,10 +223,47 @@ void seleccion(int *A, int n){
 		A[k] = temp;//A la k-esima posición del arreglo A le asignamos el contenido de temp
 	}
 }
+/*
+Ordenamiento Shell:
+Esta función recibe como argumentos el arreglo a ordenar y el tamaño del arreglo que es n, ademas n es de
+igual forma el tamaño del problema.
+Variables:
+-i como iterador
+-aux variable auxiliar en los cambios en el ordenamiento.
+-b variable que actua como bandera indica cuando ya no se cumple el for para terminar el while
+-k como intervalo 
 
-
-
-
+El algoritmo consiste de  tres  ciclos while donde el primer while se ejecutara mientras k sea mayor o igual a 1 y dentro de este while se
+divide el intervalo entre 2 y se da un valor true a "b", segundo while, mientras "b" es verdad entra y a "b" se le da un valor de false y se
+inicializa la variable i en 0,tercer while, mientras la suma del valor i + k sea menor o igual que n y si "a" en la posici�n i es
+mayor a "a" posicion i m�s el valor del intervalo se hara el intercambio usando la varible "aux" para guardar el valor a cambiar si no 
+incrementamos a la variable "i".
+ 
+*/
+void shell(int A[], int n)
+{
+    int k, b, i, temp;
+    k = trunc(n / 2);
+    while (k >= 1)
+    {
+        b = 1;
+        while (b != 0)
+        {
+            b = 0;
+            for (i = k; i <= n - 1; i++)
+            {
+                if (A[i - k] > A[i])
+                {
+                    temp = A[i];
+                    A[i] = A[i - k];
+                    A[i - k] = temp;
+                    b = b + 1;
+                }
+            }
+        }
+        k = trunc(k / 2);
+    }
+}
 
 //Importante
 //

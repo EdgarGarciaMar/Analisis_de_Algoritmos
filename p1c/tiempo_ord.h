@@ -60,6 +60,9 @@ void insercion(int *, int);
 
 void seleccion(int *, int);
 
+void shell(int A[], int n);
+
+
 void MergeSort(int *A, int p, int r);
 void Merge(int *A, int p, int q, int r);
 

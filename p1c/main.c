@@ -22,11 +22,67 @@
 //********************************************************************************
 //DECLARACION DE ESTRUCTURAS
 //********************************************************************************
+//Estructura del árbol binario, se contempla la raiz, hijo izq, hijo der y su dato
+struct arbol
+{
+    struct arbol *der, *izq;
+    int dato;
+};
 
+int pos = 0;//variable que controla la posición en el arreglo cuando se guardan los datos del árbol
+struct arbol *vacio=NULL;//Vacío de referencia
 //*****************************************************************
 //DECLARACIÓN DE FUNCIONES
 //*****************************************************************
+/*
+Arbol binario
+*/
+void insertarbol(struct arbol **raiz, int num)//Función que guarda los datos en el arbol
+{
+    if ((*raiz) == NULL)//Cuando esta vacio el arbol se crea la raiz con sus hijos vacios
+    {
+        *raiz = malloc(sizeof(struct arbol));
+        (*raiz)->dato = num;
+        (*raiz)->der = NULL;
+        (*raiz)->izq = NULL;
+    }
+    else//cuando se tiene raiz se guarda conforme al tamaño, si es menor se guarda en izq, si es mayor en la der
+    {
+        if (num < (*raiz)->dato)
+        {
+            insertarbol(&(*raiz)->izq, num);
+        }
+        else
+        {
+            insertarbol(&(*raiz)->der, num);
+        }
+    }
+}
 
+
+void guardarRecorridoinorden(struct arbol *raiz, int A[])//función de guardado en el arreglo
+{
+    if (raiz != vacio)
+    {
+		//se recorre el árbol en inorden, se van guardando los numeros acorde a pos en el arreglo
+		//Siempre y cuando no este vacía la raiz
+        guardarRecorridoinorden(raiz->izq, A);
+        A[pos++] = raiz->dato;
+        guardarRecorridoinorden(raiz->der, A);
+    }
+}
+
+
+void ordenamientodearbolbinario(int A[], int n)//Función de ordenamiento
+{
+    struct arbol *arbol = NULL;
+    for (int i = 0; i < n; i++)
+    {
+        insertarbol(&arbol, A[i]);//Se guardan los datos en árbol
+    }
+    guardarRecorridoinorden(arbol, A);//Se guardan los datos en A[]
+    free(arbol);
+}
 //*****************************************************************
 //VARIABLES GLOBALES
 //*****************************************************************
@@ -102,14 +158,16 @@ int main(int argc, char *argv[])
 		printf("\n**********Seleccion***********\n");
 		break;
 	case 6: //shell
-		//uswtime(&utime0, &stime0, &wtime0);
+		uswtime(&utime0, &stime0, &wtime0);
+		shell(A, n);
+		uswtime(&utime1, &stime1, &wtime1);
 		printf("\n**********Shell***********\n");
-		//uswtime(&utime1, &stime1, &wtime1);
 		break;
 	case 7: //Árbol binario
-		//uswtime(&utime0, &stime0, &wtime0);
+		uswtime(&utime0, &stime0, &wtime0);
+		ordenamientodearbolbinario(A, n);
+		uswtime(&utime1, &stime1, &wtime1);
 		printf("\n**********Arbol binario***********\n");
-		//uswtime(&utime1, &stime1, &wtime1);
 		break;
 	case 8: //ordenamiento por mezcla
 		uswtime(&utime0, &stime0, &wtime0);
