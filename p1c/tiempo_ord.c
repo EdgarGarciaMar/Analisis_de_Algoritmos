@@ -177,3 +177,37 @@ void Burbujaop2(int A[], int n)
         i = i + 1;
     }
 }
+
+void insersion(int A[], int n)
+{
+    int i, j, temp;
+    for (i = 0; i < n; i++)
+    {
+        j = i;
+        temp = A[i];
+        while (j > 0 && temp < A[j - 1])
+        {
+            A[j] = A[j - 1];
+            j--;
+        }
+        A[j] = temp;
+    }
+}
+void seleccion(int A[], int n)
+{
+    int k, p, i, temp;
+    for (k = 0; k < n - 2; k++)
+    {
+        p = k;
+        for (i = k + 1; i < n - 1; i++)
+        {
+            if (A[i] < A[p])
+            {
+                p = i;
+            }
+        }
+        temp = A[p];
+        A[p] = A[k];
+        A[k] = temp;
+    }
+}

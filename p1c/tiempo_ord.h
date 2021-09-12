@@ -52,3 +52,7 @@ void BurbujaSimple(int A[], int n);
 void Burbujaop1(int A[], int n);
 
 void Burbujaop2(int A[], int n);
+
+void insersion(int A[], int n);
+
+void seleccion(int A[], int n);
