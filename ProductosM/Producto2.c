@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
     }
     //***************Productos mayores**********************************
     Producto2Mayores(A, n);
-    //********************Ciclo con el cual se generaron los 9 archivos****
+    //********************Ciclo con el cual se generaron los 6 archivos****
     //for (int i = 0; i < n; i++)
     //{
     //printf("%d\n", rand() % 100000); Imprimir el caso medio con i = 0 i<n
