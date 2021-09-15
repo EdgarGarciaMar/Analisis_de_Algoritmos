@@ -107,10 +107,18 @@ void sumacuadratica3mayoresv2(int *A, int n)
     printf("\n Tiempo: %d \n", cont);
 }
 
+void codigo5(int n, int *A)
+{
+    int polinomio, z;
+    for (int i = 0; i <= n; i++)
+    {
+        polinomio = polinomio * z + A[n - i];
+    }
+}
 int main(int argc, char *argv[])
 {
     int n, opc;
-    if (argc != 3)
+    if (argc != 2)
     {
         printf("\nIndique el tamanio del algoritmo - Ejemplo: [user@equipo]$ %s 100 \n", argv[0]);
         exit(1);
