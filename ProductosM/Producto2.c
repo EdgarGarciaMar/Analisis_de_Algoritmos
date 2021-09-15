@@ -44,7 +44,7 @@ void Producto2Mayores(int A[], int n)
             mayor2 = A[i];
             cont++; //1 asignación
         }
-        cont++; //falso if3
+        cont += 2; //falso if3 y while
         i = i + 1;
     }
     printf("\nEl resutltado de %d x %d = %d\n", mayor1, mayor2, mayor1 * mayor2);
