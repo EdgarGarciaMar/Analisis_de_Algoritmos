@@ -1,15 +1,40 @@
 //*****************************************************************
-//TIEMPO.C
-//*****************************************************************
-//*****************************************************************
+//Datos del Código base
 //M. EN C. EDGARDO ADRIÁN FRANCO MARTÍNEZ
 //Curso: Análisis de algoritmos
 //(C) Enero 2013
 //ESCOM-IPN
-//Ejemplo de medición de tiempo en C y recepción de parametros en C bajo UNIX
-//Compilación de la libreria: "gcc -c tiempo.c " (Generación del código objeto)
 //*****************************************************************
+//Datos del Código Actual
+/*
+Versión del programa: 1.0
 
+Nombre del programa: Algoritmos de ordenamiento de datos en lenguaje c
+
+Descripción:
+Este programa recibe el tamaño de problema -n-, la opción de ordenamiento del 1-9 
+las cuales son burbuja, inserción, selección, etc. Y mediante redireccionamiento toma el -n- 
+conjunto de números del archivo numeros10millones.txt, la salida es redireccionada a un archivo 
+txt donde se muestra que algoritmo ordeno los números, y muestra el tiempo real, del sistema y 
+del usuario que le tomo a la pc para realizar dicha operación e imprime los datos ordenados.
+
+Errores:
+El programa puede marcar error si la cantidad de números ingresada es muy grande.
+
+Equipo: Noobcoders
+Fuentes Díaz Jesús Alejandro
+García Ledezma Miguel Ángel
+García Marciano Edgar
+Guadarrama Hidalgo Jorge Luis
+Práctica 1
+Pruebas a posteriori
+Análisis de algoritmos
+Franco Martínez Edgardo Adrián
+3CM12
+
+compilación:
+gcc main.c tiempo_ord.c -o sal
+*/
 //*****************************************************************
 //Librerias incluidas
 //*****************************************************************
@@ -183,19 +208,21 @@ void Burbujaop2(int A[], int n)
   comenzando desde la segunda posición del arreglo y de esta forma compara
   si n es menor a n-1 y si es así intercambiará la posición de dichos 
   numeros en el arreglo*/
-void insercion(int *A, int n){
-	int i, j, temp;
-	for (i = 0; i < n; i++)//Recorre todo el arreglo para asegurar que se comparen todos los numeros
-	{
-		j=i;
-		temp=A[i];//Se asigna a temp el valor de la i-esima posición del arreglo
-		while((j > 0) && (temp < A[j-1])){/*Se verifica que j sea mayor a 0 y que el valor de la i-esima posición del arreglo (n)
+void insercion(int *A, int n)
+{
+    int i, j, temp;
+    for (i = 0; i < n; i++) //Recorre todo el arreglo para asegurar que se comparen todos los numeros
+    {
+        j = i;
+        temp = A[i]; //Se asigna a temp el valor de la i-esima posición del arreglo
+        while ((j > 0) && (temp < A[j - 1]))
+        {                    /*Se verifica que j sea mayor a 0 y que el valor de la i-esima posición del arreglo (n)
 											sea menor a A[j-1] (n-1)*/
-			A[j] = A[j-1];/*Se intercambian posiciones, el numero mayor pasa a la j-esima posición*/
-			j--;
-		}
-		A[j] = temp;/*El numero menor se coloca en la j-esima posición ya que previamente j fue decrementado en 1*/
-	}
+            A[j] = A[j - 1]; /*Se intercambian posiciones, el numero mayor pasa a la j-esima posición*/
+            j--;
+        }
+        A[j] = temp; /*El numero menor se coloca en la j-esima posición ya que previamente j fue decrementado en 1*/
+    }
 }
 /*Esta función ordena de forma ascendente un arreglo de numeros enteros, 
   para ello se basa en buscar el numero más pequeño del arreglo y lo inserta
@@ -203,25 +230,26 @@ void insercion(int *A, int n){
   más pequeño del resto del arreglo y lo pone en la segunda posición del
   arreglo y así sucesivamente hasta terminar de analizar los elementos en
   el arreglo*/
-void seleccion(int *A, int n){
-	int k, p, i, temp;//Declaración de variables
-	for (k = 0; k < n-1; k++)/*Ciclo for que se encargará de que recorramos todo el arreglo hasta su penultima posición,
+void seleccion(int *A, int n)
+{
+    int k, p, i, temp;          //Declaración de variables
+    for (k = 0; k < n - 1; k++) /*Ciclo for que se encargará de que recorramos todo el arreglo hasta su penultima posición,
 							   ya que se supone que el elemento de la ultima posición es el mayor y ya está acomodado.*/
-	{
-		p=k;//la variable p toma el valor de k
-		for (i = k+1; i < n; i++)/*Este for se asegura de que recorramos el arreglo desde la i-esima posición hasta n-1, 
+    {
+        p = k;                      //la variable p toma el valor de k
+        for (i = k + 1; i < n; i++) /*Este for se asegura de que recorramos el arreglo desde la i-esima posición hasta n-1, 
 								   para encontrar el elemento más pequeño en este subarreglo, cabe destacar que i irá 
 								   cambiando y haciendose más grande conforme se van acomodando los numeros en el arreglo*/
-		{
-			if (A[i] < A[p])// nos ayuda a encontrar el elemento más pequeño del arreglo o subarreglo según sea el caso
-			{
-				p=i;// la variable p toma el valor de i
-			}
-		}
-		temp = A[p];//Le asignamos a la variable temp el valor en la p-esima posición del arreglo A
-		A[p] = A[k];//A la p-esima posición del arreglo A le asignamos la K-esima posición del arreglo A
-		A[k] = temp;//A la k-esima posición del arreglo A le asignamos el contenido de temp
-	}
+        {
+            if (A[i] < A[p]) // nos ayuda a encontrar el elemento más pequeño del arreglo o subarreglo según sea el caso
+            {
+                p = i; // la variable p toma el valor de i
+            }
+        }
+        temp = A[p]; //Le asignamos a la variable temp el valor en la p-esima posición del arreglo A
+        A[p] = A[k]; //A la p-esima posición del arreglo A le asignamos la K-esima posición del arreglo A
+        A[k] = temp; //A la k-esima posición del arreglo A le asignamos el contenido de temp
+    }
 }
 /*
 Ordenamiento Shell:
@@ -283,45 +311,56 @@ Una vez obtenido este sub-arreglo se retorna y se comienza a ordenar
 mediante la llamada a la función Merge la cual ordena cada sub-arreglo 
 obtenido.
 */
-void MergeSort(int *A, int p, int r){ 
-	int q;                            //Permite dividir el arregloen sub arreglos de aproximadamente la mitad de largo
-	if(p < r){ 
-		q = (int)((float)(p+r)/2);
-		MergeSort(A, p, q);
-		MergeSort(A, q+1, r);
-		Merge(A, p, q, r);
-	}
-	return;
+void MergeSort(int *A, int p, int r)
+{
+    int q; //Permite dividir el arregloen sub arreglos de aproximadamente la mitad de largo
+    if (p < r)
+    {
+        q = (int)((float)(p + r) / 2);
+        MergeSort(A, p, q);
+        MergeSort(A, q + 1, r);
+        Merge(A, p, q, r);
+    }
+    return;
 }
-void Merge(int *A, int p, int q, int r){
-	int l = r-p+1;                      //largo del sub-arreglo
-	int i = p;							//inicio del sub-arreglo
-	int j = q+1;						//mitad del sub arreglo 
-	int k;								//Variable para los bucles
-	int C[r-p+1];						//Sub-arreglo para cambiar posiciones
-	for(k=0;k<l;k++){
-		if(i<=q && j<=r){
-			if(A[i]<A[j]){
-				C[k]=A[i];
-				i++;
-			}else{
-				C[k]=A[j];
-				j++;
-			}
-		}else if(i<=q){
-			C[k]=A[i];
-			i++;
-		}else{
-			C[k]=A[j];
-			j++;
-		}
-	}
-	for(k=0;k<l;k++){
-		A[p+k]=C[k];
-	}
+void Merge(int *A, int p, int q, int r)
+{
+    int l = r - p + 1; //largo del sub-arreglo
+    int i = p;         //inicio del sub-arreglo
+    int j = q + 1;     //mitad del sub arreglo
+    int k;             //Variable para los bucles
+    int C[r - p + 1];  //Sub-arreglo para cambiar posiciones
+    for (k = 0; k < l; k++)
+    {
+        if (i <= q && j <= r)
+        {
+            if (A[i] < A[j])
+            {
+                C[k] = A[i];
+                i++;
+            }
+            else
+            {
+                C[k] = A[j];
+                j++;
+            }
+        }
+        else if (i <= q)
+        {
+            C[k] = A[i];
+            i++;
+        }
+        else
+        {
+            C[k] = A[j];
+            j++;
+        }
+    }
+    for (k = 0; k < l; k++)
+    {
+        A[p + k] = C[k];
+    }
 }
-
-
 
 /*
 Método de ordenamiento rápido:
@@ -337,41 +376,47 @@ la posición de dos elementos del arreglo entre si. Recibe los subíndices
 de los elementos del arreglo y el apuntador al arreglo.
 
 */
-void QuickSort(int *A,int p,int r){
-	int j;								//Se usara para alamcenar el subidice del pivote
-	if(p<r){
-		j=Pivot(A,p,r);
-		QuickSort(A, p, j);
-		QuickSort(A, j+1, r);
-	}
-	return;
+void QuickSort(int *A, int p, int r)
+{
+    int j; //Se usara para alamcenar el subidice del pivote
+    if (p < r)
+    {
+        j = Pivot(A, p, r);
+        QuickSort(A, p, j);
+        QuickSort(A, j + 1, r);
+    }
+    return;
 }
-int Pivot(int *A,int p,int r){
-	int piv;					//almacenara el pivote
-	int i;						//subidice del inicio del sub-arreglo
-	int j;						//subidice del final del sub-arreglo
-	piv=A[p];
-	i=p;
-	j=r;
-	while(1){
-		while(A[i]<piv)			//verifica que los elementos del inicio sean menores que el pivote
-			i++;
-		while(A[j]>piv)			//verifica que los elementos del final sean mayores que el pivote
-			j--;
-		if(i>=j){				//retorna el pivote
-			return j;
-		}else{					//intercambia posiciones de elemntos del sub-arreglo
-			Intercambiar(A, i, j);
-			i++;
-			j--;
-		}
-	}
-	
-	
+int Pivot(int *A, int p, int r)
+{
+    int piv; //almacenara el pivote
+    int i;   //subidice del inicio del sub-arreglo
+    int j;   //subidice del final del sub-arreglo
+    piv = A[p];
+    i = p;
+    j = r;
+    while (1)
+    {
+        while (A[i] < piv) //verifica que los elementos del inicio sean menores que el pivote
+            i++;
+        while (A[j] > piv) //verifica que los elementos del final sean mayores que el pivote
+            j--;
+        if (i >= j)
+        { //retorna el pivote
+            return j;
+        }
+        else
+        { //intercambia posiciones de elemntos del sub-arreglo
+            Intercambiar(A, i, j);
+            i++;
+            j--;
+        }
+    }
 }
-void Intercambiar(int *A, int i, int j){
-	int temp;
-	temp=A[j];
-	A[j]=A[i];
-	A[i]=temp;
+void Intercambiar(int *A, int i, int j)
+{
+    int temp;
+    temp = A[j];
+    A[j] = A[i];
+    A[i] = temp;
 }

@@ -1,13 +1,40 @@
 //*****************************************************************
+//Datos del Código base
 //M. EN C. EDGARDO ADRIÁN FRANCO MARTÍNEZ
 //Curso: Análisis de algoritmos
 //(C) Enero 2013
 //ESCOM-IPN
-//Ejemplo de medición de tiempo en C y recepción de parametros en C bajo UNIX
-//Compilación: "gcc main.c tiempo.x  -o main(teimpo.c si se tiene la implementación de la libreria o tiempo.o si solo se tiene el codigo objeto)"
-//Ejecución: "./main n" (Linux y MAC OS)
 //*****************************************************************
+//Datos del Código Actual
+/*
+Versión del programa: 1.0
 
+Nombre del programa: Algoritmos de ordenamiento de datos en lenguaje c
+
+Descripción:
+Este programa recibe el tamaño de problema -n-, la opción de ordenamiento del 1-9 
+las cuales son burbuja, inserción, selección, etc. Y mediante redireccionamiento toma el -n- 
+conjunto de números del archivo numeros10millones.txt, la salida es redireccionada a un archivo 
+txt donde se muestra que algoritmo ordeno los números, y muestra el tiempo real, del sistema y 
+del usuario que le tomo a la pc para realizar dicha operación e imprime los datos ordenados.
+
+Errores:
+El programa puede marcar error si la cantidad de números ingresada es muy grande.
+
+Equipo: Noobcoders
+Fuentes Díaz Jesús Alejandro
+García Ledezma Miguel Ángel
+García Marciano Edgar
+Guadarrama Hidalgo Jorge Luis
+Práctica 1
+Pruebas a posteriori
+Análisis de algoritmos
+Franco Martínez Edgardo Adrián
+3CM12
+
+compilación:
+gcc main.c tiempo_ord.c -o sal
+*/
 //*****************************************************************
 //LIBRERIAS INCLUIDAS
 //*****************************************************************
@@ -25,63 +52,61 @@
 //Estructura del árbol binario, se contempla la raiz, hijo izq, hijo der y su dato
 struct arbol
 {
-    struct arbol *der, *izq;
-    int dato;
+	struct arbol *der, *izq;
+	int dato;
 };
 
-int pos = 0;//variable que controla la posición en el arreglo cuando se guardan los datos del árbol
-struct arbol *vacio=NULL;//Vacío de referencia
+int pos = 0;				//variable que controla la posición en el arreglo cuando se guardan los datos del árbol
+struct arbol *vacio = NULL; //Vacío de referencia
 //*****************************************************************
 //DECLARACIÓN DE FUNCIONES
 //*****************************************************************
 /*
 Arbol binario
 */
-void insertarbol(struct arbol **raiz, int num)//Función que guarda los datos en el arbol
+void insertarbol(struct arbol **raiz, int num) //Función que guarda los datos en el arbol
 {
-    if ((*raiz) == NULL)//Cuando esta vacio el arbol se crea la raiz con sus hijos vacios
-    {
-        *raiz = malloc(sizeof(struct arbol));
-        (*raiz)->dato = num;
-        (*raiz)->der = NULL;
-        (*raiz)->izq = NULL;
-    }
-    else//cuando se tiene raiz se guarda conforme al tamaño, si es menor se guarda en izq, si es mayor en la der
-    {
-        if (num < (*raiz)->dato)
-        {
-            insertarbol(&(*raiz)->izq, num);
-        }
-        else
-        {
-            insertarbol(&(*raiz)->der, num);
-        }
-    }
+	if ((*raiz) == NULL) //Cuando esta vacio el arbol se crea la raiz con sus hijos vacios
+	{
+		*raiz = malloc(sizeof(struct arbol));
+		(*raiz)->dato = num;
+		(*raiz)->der = NULL;
+		(*raiz)->izq = NULL;
+	}
+	else //cuando se tiene raiz se guarda conforme al tamaño, si es menor se guarda en izq, si es mayor en la der
+	{
+		if (num < (*raiz)->dato)
+		{
+			insertarbol(&(*raiz)->izq, num);
+		}
+		else
+		{
+			insertarbol(&(*raiz)->der, num);
+		}
+	}
 }
 
-
-void guardarRecorridoinorden(struct arbol *raiz, int A[])//función de guardado en el arreglo
+void guardarRecorridoinorden(struct arbol *raiz, int A[]) //función de guardado en el arreglo
 {
-    if (raiz != vacio)
-    {
+	if (raiz != vacio)
+	{
 		//se recorre el árbol en inorden, se van guardando los numeros acorde a pos en el arreglo
 		//Siempre y cuando no este vacía la raiz
-        guardarRecorridoinorden(raiz->izq, A);
-        A[pos++] = raiz->dato;
-        guardarRecorridoinorden(raiz->der, A);
-    }
+		guardarRecorridoinorden(raiz->izq, A);
+		A[pos++] = raiz->dato;
+		guardarRecorridoinorden(raiz->der, A);
+	}
 }
 
-
-void ordenamientodearbolbinario(int A[], int n)//Función de ordenamiento
+void ordenamientodearbolbinario(int A[], int n) //Función de ordenamiento
 {
-    struct arbol *arbol = NULL;
-    for (int i = 0; i < n; i++)
-    {
-        insertarbol(&arbol, A[i]);//Se guardan los datos en árbol
-    }
-    guardarRecorridoinorden(arbol, A);//Se guardan los datos en A[]
-    free(arbol);
+	struct arbol *arbol = NULL;
+	for (int i = 0; i < n; i++)
+	{
+		insertarbol(&arbol, A[i]); //Se guardan los datos en árbol
+	}
+	guardarRecorridoinorden(arbol, A); //Se guardan los datos en A[]
+	free(arbol);
 }
 //*****************************************************************
 //VARIABLES GLOBALES

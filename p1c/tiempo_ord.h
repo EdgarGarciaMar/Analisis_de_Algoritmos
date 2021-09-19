@@ -1,15 +1,40 @@
 //*****************************************************************
-//TIEMPO.H
-//*****************************************************************
-//*****************************************************************
+//Datos del Código base
 //M. EN C. EDGARDO ADRIÁN FRANCO MARTÍNEZ
 //Curso: Análisis de algoritmos
 //(C) Enero 2013
 //ESCOM-IPN
-//Ejemplo de medición de tiempo en C y recepción de parametros en C bajo UNIX
-//Compilación de la libreria: "gcc -c tiempo.c " (Generación del código objeto)
 //*****************************************************************
+//Datos del Código Actual
+/*
+Versión del programa: 1.0
 
+Nombre del programa: Algoritmos de ordenamiento de datos en lenguaje c
+
+Descripción:
+Este programa recibe el tamaño de problema -n-, la opción de ordenamiento del 1-9 
+las cuales son burbuja, inserción, selección, etc. Y mediante redireccionamiento toma el -n- 
+conjunto de números del archivo numeros10millones.txt, la salida es redireccionada a un archivo 
+txt donde se muestra que algoritmo ordeno los números, y muestra el tiempo real, del sistema y 
+del usuario que le tomo a la pc para realizar dicha operación e imprime los datos ordenados.
+
+Errores:
+El programa puede marcar error si la cantidad de números ingresada es muy grande.
+
+Equipo: Noobcoders
+Fuentes Díaz Jesús Alejandro
+García Ledezma Miguel Ángel
+García Marciano Edgar
+Guadarrama Hidalgo Jorge Luis
+Práctica 1
+Pruebas a posteriori
+Análisis de algoritmos
+Franco Martínez Edgardo Adrián
+3CM12
+
+compilación:
+gcc main.c tiempo_ord.c -o sal
+*/
 //*****************************************************************
 //uswtime (Declaración)
 //*****************************************************************
@@ -61,7 +86,6 @@ void insercion(int *, int);
 void seleccion(int *, int);
 
 void shell(int A[], int n);
-
 
 void MergeSort(int *A, int p, int r);
 void Merge(int *A, int p, int q, int r);
