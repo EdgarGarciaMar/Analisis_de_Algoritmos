@@ -6,6 +6,7 @@ compilación:
 gcc Producto2.c -o p2
 Ejecución:
 ./p2 valor de "n" = 2500 o 5000 < nombre del archivo.txt que se quiera medir
+nota: cuando es peor caso en el while solo se cuenta 1 es decir count++;  envés de count+=2;
 */
 #include <stdio.h>
 #include <stdlib.h>
