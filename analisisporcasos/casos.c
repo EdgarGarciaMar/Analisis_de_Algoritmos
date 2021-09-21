@@ -1,75 +1,103 @@
-#include <stdlib.h>
+#include <stdio.h>
 #include <stdlib.h>
 
-void sumacuadratica3mayores(int *A, int n)
+void sumacuadratica3mayores(int A[], int n)
 {
     int m1, m2, m3, i, cont = 0;
     if (A[1] > A[2] && A[1] > A[3])
     {
+        cont += 2; //2 comparaciones if
         m1 = A[1];
+        cont++; //1 asignación m1
         if (A[2] > A[3])
         {
+            cont++; //1 comparación if
             m2 = A[2];
+            cont++;
             m3 = A[3];
+            cont++;
         }
         else
         {
+            cont++; //falso if
             m2 = A[3];
+            cont++;
             m3 = A[2];
+            cont++;
         }
     }
     else if (A[2] > A[1] && A[2] > A[3])
     {
+        cont += 2; //2 comparaciones falso if
         m1 = A[2];
+        cont++; //1 asignación
         if (A[1] > A[3])
         {
+            cont++; //1 comparación
             m2 = A[1];
             m3 = A[3];
+            cont += 2; //2 asignaciones
         }
         else
         {
+            cont++; //falso if
             m2 = A[3];
             m3 = A[1];
+            cont += 2; //2 asignaciones
         }
     }
     else
     {
+        cont++; //falso if
         m1 = A[3];
+        cont++; //1 asignación
         if (A[1] > A[2])
         {
+            cont++; //1 comparación
             m2 = A[1];
             m3 = A[2];
+            cont += 2; //2 asignaciones
         }
         else
         {
+            cont++; //falso if
             m2 = A[2];
             m3 = A[1];
+            cont += 2; //2 asignaciones
         }
     }
-    i = i + 4;
+    i = 4;
     while (i <= n)
     {
+        cont += 3;
         if (A[i] > m1)
         {
+            cont++; //1 comparación
             m3 = m2;
             m2 = m1;
-            m3 = A[i];
+            m1 = A[i];
+            cont += 3; //asignaciones
         }
         else if (A[i] > m2)
         {
+            cont++; //1 comparación
             m3 = m2;
             m2 = A[i];
+            cont += 2; //asignaciones
         }
         else if (A[i] > m3)
         {
+            cont++; //1 comparación
             m3 = A[i];
+            cont++; //asignaciones
         }
         i = i + 1;
     }
-    printf("\n La suma cuadratica de los 3 numeros mayores es: %d\n", pow(m1 + m2 + m3, 2));
+    int suma = (m1 * m1) + (m2 * m2) + (m3 * m3);
+    printf("\n %d + %d + %d al cuadrado es: %d\n", m1, m2, m3, suma);
     printf("\n Tiempo: %d \n", cont);
 }
-
+/*
 void maximoComunDivisor(int m, int n)
 {
     int a, b, residuo, maximocomundivisor, cont = 0;
@@ -103,7 +131,7 @@ void sumacuadratica3mayoresv2(int *A, int n)
         }
     }
     r = A[n - 1] + A[n - 2] + A[n - 3];
-    printf("\n La suma cuadratica de los 3 numeros mayores es: %d\n", pow(r, 2));
+    printf("\n La suma cuadratica de los 3 numeros mayores es: %f\n", pow(r, 2));
     printf("\n Tiempo: %d \n", cont);
 }
 
@@ -115,9 +143,11 @@ void codigo5(int n, int *A)
         polinomio = polinomio * z + A[n - i];
     }
 }
+*/
 int main(int argc, char *argv[])
 {
-    int n, opc;
+    int n;
+
     if (argc != 2)
     {
         printf("\nIndique el tamanio del algoritmo - Ejemplo: [user@equipo]$ %s 100 \n", argv[0]);
@@ -128,12 +158,19 @@ int main(int argc, char *argv[])
     {
         n = atoi(argv[1]);
     }
+    // Lectura del archivo numeros10millones.txt mediante redireccionamiento.
     int A[n];
-    for (int i = 1; i <= n; i++)
+    for (int a = 0; a <= n; a++)
     {
-        scanf("%d", A[i]);
+        scanf("%d", &A[a]);
+        //printf("[%d]=%d\n", a, A[a]);
     }
 
     sumacuadratica3mayores(A, n);
+    /*for (int i = 0; i < n; i++)
+    {
+        printf("%d\n", i);
+    }*/
+
     return 0;
 }
