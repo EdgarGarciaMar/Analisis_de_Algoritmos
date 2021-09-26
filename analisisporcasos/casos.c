@@ -48,7 +48,7 @@ void sumacuadratica3mayores(int A[], int n)
     }
     else
     {
-        cont++; //falso if
+        cont += 2; //falso if
         m1 = A[3];
         cont++; //1 asignación
         if (A[1] > A[2])
