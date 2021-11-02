@@ -1,11 +1,13 @@
 /*
 Versión del programa: 1.0
 
-Nombre del programa: Algoritmo de Huffman en lenguaje c
+Nombre del programa: Algoritmo de Huffman en lenguaje c (Parte 1 Codificador)
 
 Descripción:
 Este programa recibe el archivo a ser comprimido y codificado en un txt
-y cuando el programa termian da un archivo  con la codificación
+y un archivo de salida en blanco, en el cual sera escrita la codificación,
+caundo se termine la codificación dara un mensaje de exito y se pobra ver 
+en el archivo de salida la codificación binbaria
 
 
 Errores:
@@ -24,6 +26,8 @@ Franco Martínez Edgardo Adrián
 
 compilación:
 gcc codificador.c -o codificador
+
+Ejecución: ./codificador entrada.txt salida.txt
 */
 
 //********Librerias*******
