@@ -57,9 +57,9 @@ int main(int argc, char *argv[])
    unsigned long int dWORD; /* Soble palabra usada durante la codificación */
    int nBits;               /* Número de bits usados de dWORD */
 
-   if (argc < 3)
+   if (argc < 2)
    {
-      printf("Usar:\n%s <fichero_entrada> <fichero_salida>\n", argv[0]);
+      printf("Usar:\n%s <fichero_entrada> \n", argv[0]);
       return 1;
    }
 
@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
    CrearTabla(Arbol, 0, 0);
 
    /* Crear fichero comprimido */
-   fs = fopen(argv[2], "wb");
+   fs = fopen("codificado.dat", "wb");
    /* Escribir la longitud del fichero */
    fwrite(&Longitud, sizeof(long int), 1, fs);
    /* Cuenta el número de elementos de tabla */
