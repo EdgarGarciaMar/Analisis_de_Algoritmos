@@ -31,9 +31,9 @@ int main(int argc, char *argv[])
    unsigned char a;
    int i, j;
 
-   if(argc < 3)
+   if(argc < 2)
    {
-      printf("Usar:\n%s <fichero_entrada> <fichero_salida>\n", argv[0]);
+      printf("Usar:\n%s <fichero_entrada> \n", argv[0]);
       return 1;
    }
 
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
    }
    /* Leer datos comprimidos y extraer al fichero de salida */
    bits = 0;
-   fs = fopen(argv[2], "w");
+   fs = fopen("decodificado.txt", "w");
    /* Lee los primeros cuatro bytes en la dobel palabra bits */
    fread(&a, sizeof(char), 1, fe);
    bits |= a;
