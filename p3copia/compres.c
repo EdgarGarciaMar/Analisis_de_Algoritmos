@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
 {
    tipoNodo *Lista; /* Lista de letras y frecuencias */
    tipoNodo *Arbol; /* Arbol de letras y frecuencias */
+   tipoNodo *aux; //Auxiliar para imprimir la tabla
 
    FILE *fe, *fs;   /* Ficheros de entrada y salida */
    unsigned char c; /* variables auxiliares */
@@ -61,6 +62,10 @@ int main(int argc, char *argv[])
       printf("Usar:\n%s <fichero_entrada> <fichero_salida>\n", argv[0]);
       return 1;
    }
+
+   printf("*****Algoritmo de Huffman***\n");
+   printf("--Codificador--\n");
+   printf("Tabla de frecuencias:\n");
 
    Lista = NULL;
    /* Fase 1: contar frecuencias */
@@ -80,28 +85,33 @@ int main(int argc, char *argv[])
    /* Ordenar la lista de menor a mayor */
    Ordenar(&Lista);
 
-   tipoNodo *aux;
+   
    aux = Lista;
 
-   FILE *fs2, *fs3;
-
-   fs2 = fopen("frecuencias.txt", "w");
    while (aux != NULL)
    {
-      fwrite(&aux->letra, sizeof(char), 1, fs2);
-      fwrite(&aux->frecuencia, sizeof(long int), 1, fs2);
-      aux = aux->sig;
-   }
-   fclose(fs2);
 
-   //fs3 = fopen("frecuencias.txt", "r");
-   //while (!feof(fs3))
-   //{
-   // fread(&hola, sizeof(char), 1, fs3);
-   //fread(&aux->letra, sizeof(char), 1, fs3);
-   //fread(&aux->frecuencia, sizeof(long int), 1, fs3);
-   //}
-   //fclose(fs3);
+      if (aux->letra == '\n')
+      {
+         printf("Salto_de_linea ");
+         printf("%d", aux->frecuencia);
+         printf("\n");
+      }
+      else if (aux->letra == ' ')
+      {
+         printf("Espacio ");
+         printf("%d", aux->frecuencia);
+         printf("\n");
+      }
+      //else if(aux->letra != ' ' && aux->letra != '\n')
+      //{
+         printf("%c ", aux->letra);
+         printf("%d ", aux->frecuencia);
+         printf("\n");
+         aux = aux->sig;
+      //}
+   }
+
 
    /* Crear el arbol */
    Arbol = Lista;
@@ -358,26 +368,3 @@ void BorrarArbol(tipoNodo *n)
       BorrarArbol(n->uno);
    free(n);
 }
-/*
-void tablaFrecuencia(tipoTabla *tab, char *argv[])
-{
-
-   
-   unsigned char letra;    Letra a la que hace referencia el nodo 
-   unsigned long int bits; Valor de la codificación de la letra 
-   unsigned char nbits;    Número de bits de la codificación 
-   
-   tipoTabla *aux;
-   aux = Tabla;
-
-   FILE *fs2;
-
-   fs2 = fopen(argv[3], "w");
-   while (aux != NULL)
-   {
-      fwrite(&aux->letra, sizeof(char), 1, fs2);
-      fwrite(&aux->bits, sizeof(long int), 1, fs2);
-      aux = aux->sig;
-   }
-   fclose(fs2);
-}*/
