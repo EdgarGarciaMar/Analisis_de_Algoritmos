@@ -84,18 +84,18 @@ void contar(Nodo **lista, unsigned char c)
         }
         else
         {
-            auxLista = (Nodo *)malloc(sizeof(Nodo)); //memoria para el nuevo nodo
-            auxb->letra = c;                         //se guarda el caracter escaneado
-            auxb->repeticiones = 1;                  //se guarda la repetición
-            auxb->cero = auxLista->uno = NULL;       //se ponen sus ramas a null
+            auxb = (Nodo *)malloc(sizeof(Nodo)); //memoria para el nuevo nodo
+            auxb->letra = c;                     //se guarda el caracter escaneado
+            auxb->repeticiones = 1;              //se guarda la repetición
+            auxb->cero = auxb->uno = NULL;       //se ponen sus ramas a null
             auxb->sig = auxLista;
             if (auxa) //se inserta entre los nodos
             {
-                auxa->sig = auxLista; //de la lista
+                auxa->sig = auxb; //de la lista
             }
             else
             {
-                *lista = auxLista; //si el aux es null, el aux se vuelve el primero
+                *lista = auxb; //si el aux es null, el aux se vuelve el primero
             }
         }
     }
@@ -240,7 +240,7 @@ int main(int argc, char *argv[])
     printf("*****Algoritmo de Huffman***\n");
     printf("--Codificador--\n");
 
-    if (argc < 2) //3
+    if (argc != 3)
     {
         printf("\n %s Archivo_de_entrada.txt Archivo_de_salida.txt", argv[0]);
         exit(1);
@@ -250,7 +250,7 @@ int main(int argc, char *argv[])
     //*********fase 1 contar las frecuencias de todas las letras******************
 
     fe = fopen(argv[1], "r");
-    while (1)
+    do
     {
         aux = fgetc(fe);
         if (feof(fe)) //deviuelve si llego al final del archivo
@@ -259,8 +259,10 @@ int main(int argc, char *argv[])
         }
         longitud++;          //Actualiza la cuenta del fichero
         contar(&lista, aux); //Cuenta y actualiza la lista  de las repeticiones por caracter
-    }
+    } while (1);
+
     fclose(fe);
+
     //******ordenamiento de la lista en orden acendente*****
     ordenar(&lista);
 
@@ -352,6 +354,6 @@ int main(int argc, char *argv[])
         Tabla = auxLista->sig;
         free(auxLista);
     }
-
+    printf("Codificacion terminada con exito.\n");
     return 0;
 }
