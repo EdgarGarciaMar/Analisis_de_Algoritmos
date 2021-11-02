@@ -1,25 +1,26 @@
 *****Algoritmo de Huffman***
 --Codificador--
 Tabla de frecuencias:
-l 1 
-b 1 
+x 1 
+h 1 
+f 1 
 H 1 
 E 1 
-Salto_de_linea 1
-
- 1 
+, 1 
 u 2 
-t 2 
-r 2 
-p 2 
-m 2 
-i 2 
-e 2 
-d 2 
-n 3 
-c 4 
-s 5 
-o 8 
-Espacio 8
-  8 
-a 11 
+l 2 
+t 3 
+p 3 
+Salto_de_linea 3
+r 4 
+n 4 
+e 4 
+m 5 
+d 5 
+i 6 
+b 6 
+c 7 
+s 9 
+o 15 
+Espacio 15
+a 24 

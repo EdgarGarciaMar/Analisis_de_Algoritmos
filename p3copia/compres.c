@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 {
    tipoNodo *Lista; /* Lista de letras y frecuencias */
    tipoNodo *Arbol; /* Arbol de letras y frecuencias */
-   tipoNodo *aux; //Auxiliar para imprimir la tabla
+   tipoNodo *aux;   //Auxiliar para imprimir la tabla
 
    FILE *fe, *fs;   /* Ficheros de entrada y salida */
    unsigned char c; /* variables auxiliares */
@@ -85,9 +85,8 @@ int main(int argc, char *argv[])
    /* Ordenar la lista de menor a mayor */
    Ordenar(&Lista);
 
-   
-   aux = Lista;
-
+   aux = Lista;//auxliara pra imprimir las frecuencias
+   //impresion de la tabla de frecuencias
    while (aux != NULL)
    {
 
@@ -103,15 +102,16 @@ int main(int argc, char *argv[])
          printf("%d", aux->frecuencia);
          printf("\n");
       }
-      //else if(aux->letra != ' ' && aux->letra != '\n')
-      //{
-         printf("%c ", aux->letra);
-         printf("%d ", aux->frecuencia);
-         printf("\n");
-         aux = aux->sig;
-      //}
+      else if(aux->letra != ' ' && aux->letra != '\n')
+      {
+      printf("%c ", aux->letra);
+      printf("%d ", aux->frecuencia);
+      printf("\n");
+      }
+      aux = aux->sig;
+      
+      
    }
-
 
    /* Crear el arbol */
    Arbol = Lista;
