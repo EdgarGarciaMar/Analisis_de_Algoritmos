@@ -1,0 +1,20 @@
+Archivo comprimido codificado.dat
+Inode number: 683692
+User ID of owner: 1000
+Group ID of owner: 1000
+Total file size: 359 bytes
+Last status change:       Tue Nov  2 17:05:42 2021
+Last file access:         Tue Nov  2 17:05:44 2021
+Last file modification:   Tue Nov  2 17:05:42 2021
+
+Archivo Sin comprimir entrada.txt
+Inode number: 683668
+User ID of owner: 1000
+Group ID of owner: 1000
+Total file size: 145 bytes
+Last status change:       Tue Nov  2 16:30:13 2021
+Last file access:         Tue Nov  2 16:30:20 2021
+Last file modification:   Tue Nov  2 16:30:13 2021
+
+
+Porcentaje de descomprecion = (145 x 100) /359 = 40 porciento de comprecion
