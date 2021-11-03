@@ -1,10 +1,48 @@
-/* Compresión de archivos usando el Algoritmo de Huffman: */
-/* (C) Noviembre de 2000 Salvador Pozo Coronado           */
-/* (C) Noviembre de 2018-2021 Mariano Ruiz (correcciones) */
-/* Descompresor */
+/*
+Versión del programa: 3.0
 
+Nombre del programa: Algoritmo de Huffman en lenguaje c (Parte 2 Decodificador)
+
+Descripción:
+Este programa recibe el archivo de salida codificado.dat y el archivo de entrada.txt
+posteriormente realiza la descompresion al leer el número de elementos y la longitud
+y construyendo el arbol nuevamente. Cuando termine de decodificar nos devolvera el 
+archivo decodificado.txt y un archivo de porcentaje de compresión.txt, en el cual se 
+recuperan los datos de los archivos y se calcula el porcentaje de descomprecion.
+
+
+Errores:
+En ocaciones no comprime, expande.
+
+
+Equipo: Noobcoders
+Fuentes Díaz Jesús Alejandro
+García Ledezma Miguel Ángel
+García Marciano Edgar
+Guadarrama Hidalgo Jorge Luis
+Práctica 3
+Análisis temporal (algoritmos de búsqueda)
+Análisis de algoritmos
+Franco Martínez Edgardo Adrián
+3CM12
+
+++++++++++++++++++++++++++++++++++++++++++++Versiones anteirores y enlaces+++++++++++++++++
+(C) Noviembre de 2000 Salvador Pozo Coronado           
+(C) Noviembre de 2018-2021 Mariano Ruiz (correcciones) 
+https://www.delftstack.com/es/howto/c/file-size-in-c/
+
+Ejecución y compilación desde script:
+gcc decompres.c -o decompres
+time(./decompres codificado.dat entrada.txt) > porcentaje_de_comprecion.txt
+*/
+
+ 
+
+
+//Librerias
 #include <stdio.h>
 #include <stdlib.h>
+//librerias para el calculo de compresión
 #include <fcntl.h>
 #include <time.h>
 #include <sys/stat.h>
@@ -137,14 +175,19 @@ int main(int argc, char *argv[])
 
    //MEDICION DE COMPRECIÓN
 
+   /*
+   Obtenemos los datos del archivo .dat y el .txt original y tilizamos la funcion stat en
+   lenguaje c.
+   */
+
    printf("Archivo comprimido %s\n", argv[1]);
 
-   if (stat(argv[1], &sb1) == -1)
+   if (stat(argv[1], &sb1) == -1) //llamamos a stat, le pasamos el nombre del archivo y la estructra stat
    {
       perror("stat");
-      exit(EXIT_FAILURE);
+      exit(EXIT_FAILURE); //Si no se pueden obtener los datos el programa termina
    }
-
+   //impreción de los datos obtenidos del archivo.
    printf("Inode number: %lu\n", sb1.st_ino);
    printf("User ID of owner: %u\n", sb1.st_uid);
    printf("Group ID of owner: %u\n", sb1.st_gid);
@@ -157,12 +200,12 @@ int main(int argc, char *argv[])
 
    printf("Archivo Sin comprimir %s\n", argv[2]);
 
-   if (stat(argv[2], &sb2) == -1)
+   if (stat(argv[2], &sb2) == -1)//llamamos a stat, le pasamos el nombre del archivo y la estructra stat
    {
       perror("stat");
-      exit(EXIT_FAILURE);
+      exit(EXIT_FAILURE);//Si no se pueden obtener los datos el programa termina
    }
-
+   //impreción de los datos obtenidos del archivo.
    printf("Inode number: %lu\n", sb2.st_ino);
    printf("User ID of owner: %u\n", sb2.st_uid);
    printf("Group ID of owner: %u\n", sb2.st_gid);
@@ -173,7 +216,7 @@ int main(int argc, char *argv[])
 
    printf("\n");
    printf("\n");
-
+   //imprecion de porcentaje de compresion mediante regla de tres.
    printf("Porcentaje de descomprecion = (%lu x 100) /%lu = %lu porciento de comprecion", sb1.st_size, sb2.st_size, (sb1.st_size * 100) / sb2.st_size);
    return 0;
 }

@@ -1,15 +1,47 @@
-/* Compresión de archivos usando el Algoritmo de Huffman: */
-/* (C) Noviembre de 2000 Salvador Pozo Coronado           */
-/* (C) Noviembre de 2018-2021 Mariano Ruiz (correcciones) */
-/* Compresor                                              */
+/*
+Versión del programa: 3.0
 
+Nombre del programa: Algoritmo de Huffman en lenguaje c (Parte 1 Codificador)
+
+Descripción:
+Este programa recibe el archivo a ser comprimido, es decir la entrada.txt,
+posteriormente lee los caracteres y determina las frecuencias y los organiza en una
+lista, con la lista creada se crea el arbol de codificación y las tablas de frecuencias
+y al momento de escribir el archivo codificado pasamos el numero de elementos, la longitud
+y la tabla codificada. Al termino nos retorna el codificado.dat y la tabla de frecuencias.txt
+
+
+Errores:
+En ocaciones no comprime los archivos los expande.
+
+Equipo: Noobcoders
+Fuentes Díaz Jesús Alejandro
+García Ledezma Miguel Ángel
+García Marciano Edgar
+Guadarrama Hidalgo Jorge Luis
+Práctica 3
+Análisis temporal (algoritmos de búsqueda)
+Análisis de algoritmos
+Franco Martínez Edgardo Adrián
+3CM12
+
+++++++++++++++++++++++++++++++++++++++++++++Versiones anteirores y enlaces+++++++++++++++++
+(C) Noviembre de 2000 Salvador Pozo Coronado           
+(C) Noviembre de 2018-2021 Mariano Ruiz (correcciones) 
+https://www.delftstack.com/es/howto/c/file-size-in-c/
+
+Ejecución y compilación:
+gcc compres.c -o comp
+time(./comp entrada.txt) > frecuencias.txt
+*/
+
+
+
+//********Librerias*******
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Tipo nodo para árbol o Lista de árboles*/
-/* El propósito es dual, sirve como elemento de una lista enlazada */
-/* Cuando se usa el puntero sig, y como elemento de un árbol cuando */
-/* se usan los punteros cero y uno */
+//Nodo de árbol, almacena el caracter, las repeticiones, los apuntadores de la rama 0,1 y el apuntador de siguiente
 typedef struct _nodo
 {
    unsigned char letra; /* Letra a la que hace referencia el nodo */
