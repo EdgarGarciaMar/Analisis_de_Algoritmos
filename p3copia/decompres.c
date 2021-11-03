@@ -21,7 +21,7 @@ García Ledezma Miguel Ángel
 García Marciano Edgar
 Guadarrama Hidalgo Jorge Luis
 Práctica 3
-Análisis temporal (algoritmos de búsqueda)
+Algoritmo de huffman
 Análisis de algoritmos
 Franco Martínez Edgardo Adrián
 3CM12
