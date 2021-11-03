@@ -174,7 +174,7 @@ int main(int argc, char *argv[])
    printf("\n");
    printf("\n");
 
-   printf("Porcentaje de descomprecion = (%lu x 100) /%lu = %lu porciento de comprecion", sb2.st_size, sb1.st_size, (sb2.st_size * 100) / sb1.st_size);
+   printf("Porcentaje de descomprecion = (%lu x 100) /%lu = %lu porciento de comprecion", sb1.st_size, sb2.st_size, (sb1.st_size * 100) / sb2.st_size);
    return 0;
 }
 

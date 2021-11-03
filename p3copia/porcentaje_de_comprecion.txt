@@ -3,9 +3,9 @@ Inode number: 683692
 User ID of owner: 1000
 Group ID of owner: 1000
 Total file size: 359 bytes
-Last status change:       Tue Nov  2 17:05:42 2021
-Last file access:         Tue Nov  2 17:05:44 2021
-Last file modification:   Tue Nov  2 17:05:42 2021
+Last status change:       Tue Nov  2 17:22:37 2021
+Last file access:         Tue Nov  2 17:22:39 2021
+Last file modification:   Tue Nov  2 17:22:37 2021
 
 Archivo Sin comprimir entrada.txt
 Inode number: 683668
@@ -17,4 +17,4 @@ Last file access:         Tue Nov  2 16:30:20 2021
 Last file modification:   Tue Nov  2 16:30:13 2021
 
 
-Porcentaje de descomprecion = (145 x 100) /359 = 40 porciento de comprecion
+Porcentaje de descomprecion = (359 x 100) /145 = 247 porciento de comprecion
