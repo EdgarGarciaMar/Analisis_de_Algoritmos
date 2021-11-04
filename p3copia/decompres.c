@@ -74,9 +74,9 @@ int main(int argc, char *argv[])
    unsigned char a;
    int i, j;
 
-   if (argc < 3)
+   if (argc < 4)
    {
-      printf("Usar:\n%s <fichero_entrada> <Fichero_original> \n", argv[0]);
+      printf("Usar:\n%s <fichero_entrada> <Fichero_original> <Fichero_de_salida>\n", argv[0]);
       return 1;
    }
 
@@ -129,7 +129,7 @@ int main(int argc, char *argv[])
    }
    /* Leer datos comprimidos y extraer al fichero de salida */
    bits = 0;
-   fs = fopen("decodificado.txt", "w");
+   fs = fopen(argv[3], "w");
    /* Lee los primeros cuatro bytes en la dobel palabra bits */
    fread(&a, sizeof(char), 1, fe);
    bits |= a;
@@ -217,7 +217,11 @@ int main(int argc, char *argv[])
    printf("\n");
    printf("\n");
    //imprecion de porcentaje de compresion mediante regla de tres.
-   printf("Porcentaje de descomprecion = (%lu x 100) /%lu = %lu porciento de comprecion", sb1.st_size, sb2.st_size, (sb1.st_size * 100) / sb2.st_size);
+   printf("Porcentaje de descomprecion = (%lu x 100) /%lu = %lu porciento\n", sb1.st_size, sb2.st_size, (sb1.st_size * 100) / sb2.st_size);
+   if((sb1.st_size * 100) / sb2.st_size>100)
+   printf("E programa no comprimio: %lu porciento\n",((sb1.st_size * 100) / sb2.st_size)-100);
+   else
+   printf("El programa comprimio: %lu porciento\n",100-((sb1.st_size * 100) / sb2.st_size));
    return 0;
 }
 

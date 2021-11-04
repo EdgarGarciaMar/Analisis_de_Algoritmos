@@ -8,4 +8,8 @@ gcc compres.c -o comp
 #time(./comp entrada6.txt) > frecuencias.txt
 #time(./comp entrada7.txt) > frecuencias.txt
 #time(./comp entrada8.txt) > frecuencias.txt
-time(./comp entrada9.txt) > frecuencias.txt
+#time(./comp entrada9.txt) > frecuencias.txt
+#time(./comp Prueba.docx) > frecuencias.txt
+#time(./comp Prueba.pdf) > frecuencias.txt
+#time(./comp redbull.jpeg) > frecuencias.txt
+time(./comp Prueba.zip) > frecuencias.txt
