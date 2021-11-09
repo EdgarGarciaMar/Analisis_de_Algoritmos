@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <bits/stdc++.h> //NUmeros amigos
 using namespace std;
 typedef long long int lint;
 class Solution
