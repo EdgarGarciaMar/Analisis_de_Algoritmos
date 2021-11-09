@@ -3,6 +3,8 @@
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 
+//Uso de instrucciones de preporcesador, para mejorar tiempos de ejecución
+
 #define pii pair<int, int>
 #define pll pair<long long, long long>
 #define sc scanf
@@ -50,24 +52,6 @@
 
 using namespace std;
 
-//using namespace __gnu_pbds;
-//typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
-
-/*----------------------Graph Moves----------------*/
-//const int fx[]={+1,-1,+0,+0};
-//const int fy[]={+0,+0,+1,-1};
-//const int fx[]={+0,+0,+1,-1,-1,+1,-1,+1};   // Kings Move
-//const int fy[]={-1,+1,+0,+0,+1,+1,-1,-1};  // Kings Move
-//const int fx[]={-2, -2, -1, -1,  1,  1,  2,  2};  // Knights Move
-//const int fy[]={-1,  1, -2,  2, -2,  2, -1,  1}; // Knights Move
-/*------------------------------------------------*/
-
-/*-----------------------Bitmask------------------*/
-//int Set(int N,int pos){return N=N | (1<<pos);}
-//int reset(int N,int pos){return N= N & ~(1<<pos);}
-//bool check(int N,int pos){return (bool)(N & (1<<pos));}
-/*------------------------------------------------*/
-
 #define mx 100006
 
 ll tree[2][mx];
@@ -87,43 +71,34 @@ ll query(int id, int idx)
     return ret;
 }
 
-//vector<ll>v;
-
 int main()
 {
 
-    //    freopen("in.txt","r",stdin);
-    //    freopen("out.txt","w",stdout);
-
     int n;
     sf(n);
-    //    v.pb(0);
+
     loop1(i, n)
     {
         sfl(ara[i]);
-        //        v.pb(ara[i]);
     }
-    //    sort(all(v));
 
     ll ans = 0;
 
     for (int i = n; i > 0; i--)
     {
-        //        int id=lower_bound(all(v),ara[i])-v.begin();
+
         int id = ara[i];
 
         ara2[i] = query(0, id);
         update(0, id + 1, 1);
-        //        update(0,id-1,-1);
     }
 
     for (int i = n; i > 0; i--)
     {
-        //        int id=lower_bound(all(v),ara[i])-v.begin();
+
         int id = ara[i];
         ans += query(1, id);
         update(1, id + 1, ara2[i]);
-        //        update(1,id-1,-ara2[i]);
     }
 
     printf("%lld\n", ans);
