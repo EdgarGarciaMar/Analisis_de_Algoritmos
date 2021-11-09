@@ -5,12 +5,12 @@ class Solution
 {
 public:
     lint f1, f2, x, y;
-    void solve()
+    void solve() //O(log(n))
     {
-        cin >> f1 >> f2 >> x >> y;
-        cout << binarySearch(f1 + f2, LLONG_MAX);
+        cin >> f1 >> f2 >> x >> y;                //O(1)
+        cout << binarySearch(f1 + f2, LLONG_MAX); //O(log(n))
     }
-    lint binarySearch(lint start, lint end)
+    lint binarySearch(lint start, lint end) //O(log(n))
     {
         lint mid = start + (end - start) / 2;
         if (isValid(mid))
@@ -18,14 +18,14 @@ public:
         else
             return binarySearch(mid + 1, end);
     }
-    bool isValid(lint n)
+    bool isValid(lint n) //O(1)
     {
-        lint nv = n / (x * y);
-        lint r1 = (n / x) - nv;
-        lint r2 = (n / y) - nv;
-        lint m1 = max(f1 - r2, 0LL);
-        lint m2 = max(f2 - r1, 0LL);
-        return (n - r1 - r2 - nv >= m1 + m2);
+        lint nv = n / (x * y);                //O(1)
+        lint r1 = (n / x) - nv;               //O(1)
+        lint r2 = (n / y) - nv;               //O(1)
+        lint m1 = max(f1 - r2, 0LL);          //O(1)
+        lint m2 = max(f2 - r1, 0LL);          //O(1)
+        return (n - r1 - r2 - nv >= m1 + m2); //O(1)
     }
 };
 signed main()
