@@ -2,9 +2,9 @@
 
 using namespace std;
 
-short i;
+long int i;
 
-short max(short num1, short num2, short num3)
+long int max(long int num1, long int num2, long int num3)
 {
     if (num1 >= num2 && num1 >= num3)
         return num1;
@@ -14,9 +14,9 @@ short max(short num1, short num2, short num3)
         return num3;
 }
 
-short sumaMaxima(short A[], short inicio, short fin)
+long int sumaMaxima(long int A[], long int inicio, long int fin)
 {
-    short mitad, izq, der, suma, sumaIzquierda, sumaDerecha, sumaCentral;
+    long int mitad, izq, der, suma, sumaIzquierda, sumaDerecha, sumaCentral;
 
     if (inicio == fin)
     {
@@ -49,9 +49,13 @@ short sumaMaxima(short A[], short inicio, short fin)
 
 int main()
 {
-    short n;
+    std::cin.tie(nullptr);
+    std::ios_base::sync_with_stdio(false);
+
+    // TODO: fixme.
+    long int n;
     std::cin >> n;
-    short A[n];
+    long int A[n];
     for (i = 0; i < n; i++)
     {
         std::cin >> A[i];
