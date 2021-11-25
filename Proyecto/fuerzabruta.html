@@ -26,6 +26,9 @@
       href="/img/factory-building-1_icon-icons.com_56729.ico"
       type="image/x-icon"
     />
+
+    <!--Recepcion de datos-->
+    <script type="text/javascript" src="/js/app.js"></script>
   </head>
   <body>
     <!--Menu de navegación-->
@@ -66,7 +69,7 @@
 
     <!--Form para recabar los datos para el problema-->
     <div class="form1">
-      <form>
+      <form name="datos" action="">
         <fieldset>
           <legend class="text-center">Datos Fuerza bruta</legend>
           <div class="linea1-form">
@@ -326,7 +329,11 @@
           </div>
         </fieldset>
         <div class="boton text-center">
-          <button type="submit" value="Submit" class="btn btn-primary">
+          <button
+            type="button"
+            class="btn btn-primary"
+            onclick="obtenerdatos()"
+          >
             Simular
           </button>
         </div>

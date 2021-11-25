@@ -21,7 +21,7 @@ body {
 .instrucciones {
   text-align: center;
   color: aquamarine;
-  position: relative;
+  position: static;
   top: 100px;
 }
 

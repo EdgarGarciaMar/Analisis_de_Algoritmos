@@ -1,4 +1,4 @@
-<script>
+
 
 // A JavaScript program to find minimum possible
 // time by the car chassis to complete
@@ -7,6 +7,7 @@ const NUM_LINE = 2;
 const NUM_STATION = 4;
 
 // Utility function to find a minimum of two numbers
+
 function min(a, b)
 {
 	return a < b ? a : b;
@@ -51,4 +52,4 @@ function carAssembly(a, t, e, x)
 
 // This code is contributed by Surbhi Tyagi.
 
-</script>
+
