@@ -4,7 +4,25 @@
 
 body {
   background-color: #060537;
+  color: #ffffff;
   font: 14px helvetica neue, helvetica, arial, sans-serif;
+}
+.form1 {
+  border: 2px solid white;
+  margin: 80px;
+  padding: 10px;
+}
+.linea1-form {
+  float: left;
+}
+.linea2-form {
+  float: right;
+}
+.instrucciones {
+  text-align: center;
+  color: aquamarine;
+  position: relative;
+  top: 100px;
 }
 
 #cy {

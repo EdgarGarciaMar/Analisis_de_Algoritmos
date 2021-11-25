@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>.:Líneas de producción F.B.:.</title>
+    <!--Menu de navegación-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <!--Menu de navegación-->
+
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <link
+      rel="shortcut icon"
+      href="/img/factory-building-1_icon-icons.com_56729.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!--Menu de navegación-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Líneas de producción</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">inicio</a
+              ><!--hacer una pga en html que hable del problema-->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/fuerzabruta.html"
+                >Solución por fuerza bruta</a
+              ><!--Mandar a llamar a la app de fuerza bruta con una explicación breve-->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Solución óptima DP</a
+              ><!--Mandar a llamar a la app DP con una explicación breve-->
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Fin del menu de navegación-->
+
+    <!--Form para recabar los datos para el problema-->
+    <div class="form1">
+      <form>
+        <fieldset>
+          <legend class="text-center">Ingresa los datos</legend>
+          <div class="linea1-form">
+            <!--Linea1 entrada-->
+            <div class="mb-3">
+              <label for="entradaL1" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+            <!--Linea1 nodo 1-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+            <!--Linea1 nodo 2-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+            <!--Linea1 nodo 3-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+
+            <!--Linea1 nodo 4-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+
+            <!--Cambio de L1 a L2--1-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+            <!--Cambio de L1 a L2--2-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+
+            <!--Cambio de L1 a L2--3-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <!--Linea 2-->
+          <div class="linea2-form">
+            <!--Linea1 entrada-->
+            <div class="mb-3">
+              <label for="entradaL1" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+            <!--Linea1 nodo 1-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+            <!--Linea1 nodo 2-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+            <!--Linea1 nodo 3-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+
+            <!--Linea1 nodo 4-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+
+            <!--Cambio de L1 a L2--1-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+            <!--Cambio de L1 a L2--2-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+
+            <!--Cambio de L1 a L2--3-->
+            <div class="mb-3">
+              <label for="entradaL2" class="form-label"
+                >Tiempo de entrada de la línea 1</label
+              >
+              <input
+                type="number"
+                maxlength="4"
+                id="entradaL1"
+                placeholder="Ingresa un número"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="instrucciones">
+            <h4>
+              Llena cada uno de los campos con un número que represente el
+              tiempo en cada sección de la fabrica, puedes visualizar los campos
+              como el siguiente ejemplo:
+            </h4>
+            <img src="/img/ej.png" />
+          </div>
+        </fieldset>
+        <div class="boton text-center">
+          <button type="submit" value="Submit" class="btn btn-primary">
+            Simular
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
