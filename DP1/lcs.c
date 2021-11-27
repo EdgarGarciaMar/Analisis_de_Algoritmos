@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int max(long int a, long int b)
+int max(long int a, long int b) //O(1)
 {
     if (a > b)
     {
@@ -14,29 +14,11 @@ int max(long int a, long int b)
     }
 }
 
-/*long int lcs(char x[], char y[], long int m, long int n)
-{
-    if (m == 0 || n == 0)
-    {
-        return 0;
-    }
-    if (x[m] == y[n])
-    {
-        return 1 + lcs(x, y, m - 1, n - 1);
-    }
-    else
-    {
-        return max(lcs(x, y, m, n - 1), lcs(x, y, m - 1, n));
-    }
-}*/
-
-int lcs(char *X, char *Y, int m, int n)
+int lcs(char *X, char *Y, int m, int n) //O(m*n)
 {
     int L[m + 1][n + 1];
     int i, j;
 
-    /* Following steps build L[m+1][n+1] in bottom up fashion. Note
-    that L[i][j] contains length of LCS of X[0..i-1] and Y[0..j-1] */
     for (i = 0; i <= m; i++)
     {
         for (j = 0; j <= n; j++)
@@ -52,7 +34,6 @@ int lcs(char *X, char *Y, int m, int n)
         }
     }
 
-    /* L[m][n] contains length of LCS for X[0..n-1] and Y[0..m-1] */
     return L[m][n];
 }
 
