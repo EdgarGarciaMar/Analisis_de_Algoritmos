@@ -104,6 +104,22 @@ function carAssembleTime(a , t , e , x) {
   return Math.min(first, second);
   }
 //***************Fin Código de DP***************************** 
+//*************** Código de FB***************************** 
+function MejorRecorrido(linea,estacion,tiempoant){
+  tiempoant+=S[linea][estacion];
+  if(estacion < 3){
+    MejorRecorrido(linea, estacion+1, tiempoant);//Llamada a seguir en la linea
+    if(linea==1){
+      cambio=MejorRecorrido(0, estacion+1,tiempoant+t[linea][estacion]);
+  }else{
+      cambio=MejorRecorrido(1, estacion+1,tiempoant+t[linea][estacion]);
+  }
+    return;
+  }
+    MR.push(tiempoant+x[linea]);
+  return;
+}
+//***************Fin Código de FB***************************** 
 //***************Recepcion de datos del Código de DP***************************** 
 var obtenerdatos=function () {
     var entradal1 = parseInt(document.getElementById("entradaL1").value);
@@ -138,3 +154,55 @@ var obtenerdatos=function () {
     document.getElementById("resultado").innerHTML = "El Tiempo total del ensamblado es: "+carAssembleTime(a, t, entrada, salida);
     }
     //***************Fin de Recepcion de datos del Código de DP***************************** 
+//*************** Recepcion de datos del Código de FB***************************** 
+    var obtenerdatosFB=function () {
+      var entradal1 = parseInt(document.getElementById("entradaL1").value);
+      var nodo1l1 = parseInt(document.getElementById("nodo1-1").value);
+      var nodo2l1 = parseInt(document.getElementById("nodo1-2").value);
+      var nodo3l1 = parseInt(document.getElementById("nodo1-3").value);
+      var nodo4l1 = parseInt(document.getElementById("nodo1-4").value);
+      var cambio1l1 = parseInt(document.getElementById("cambiol1-l2-1").value);
+      var cambio2l1 = parseInt(document.getElementById("cambiol1-l2-2").value);
+      var cambio3l1 = parseInt(document.getElementById("cambiol1-l2-3").value);
+      var salidal1 = parseInt(document.getElementById("salidaL1").value);
+  
+      var entradal2 = parseInt(document.getElementById("entradaL2").value);
+      var nodo1l2 = parseInt(document.getElementById("nodo2-1").value);
+      var nodo2l2 = parseInt(document.getElementById("nodo2-2").value);
+      var nodo3l2 = parseInt(document.getElementById("nodo2-3").value);
+      var nodo4l2 = parseInt(document.getElementById("nodo2-4").value);
+      var cambio1l2 = parseInt(document.getElementById("cambiol2-l1-1").value);
+      var cambio2l2 = parseInt(document.getElementById("cambiol2-l1-2").value);
+      var cambio3l2 = parseInt(document.getElementById("cambiol2-l1-3").value);
+      var salidal2 = parseInt(document.getElementById("salidaL2").value);
+  
+      e=new Array();
+      e.push(entradal1);
+      e.push(entradal2);
+      x= new Array();
+      x.push(salidal1);
+      x.push(salidal2);
+      S=[[nodo1l1,nodo2l1,nodo3l1,nodo4l1],[nodo1l2,nodo2l2,nodo3l2,nodo4l2]];
+      t=[[cambio1l1,cambio2l1,cambio3l1],[cambio1l2,cambio2l2,cambio3l2]];
+      MR=new Array();
+      index=0;
+      MejorRecorrido(0,0,e[0]);
+      MejorRecorrido(1,0,e[1]);
+      /*document.write(S[0]+"<br>");
+      document.write(S[1]+"<br>");
+      document.write(t[0]+"<br>");
+      document.write(t[1]+"<br>");
+      document.write(x+"<br>");
+      document.write(e+"<br>");*/
+      var min=MR[0];
+      for(i=1;i<MR.length;i++){
+        if(MR[i]<min){
+        min=MR[i];
+      }
+    }
+      document.getElementById("resultado").innerHTML = "El Tiempo total del ensamblado es: "+min;
+      //document.write(carAssembleTime(a, t, entrada, salida));
+      //console.log(entradal1+" "+nodo1l1+" "+nodo2l1+" "+nodo3l1+" "+nodo4l1+" "+cambio1l1+" "+cambio2l1+" "+cambio3l1+" "+salidal1+" finl1 ");
+      //console.log(entradal2+" "+nodo1l2+" "+nodo2l2+" "+nodo3l2+" "+nodo4l2+" "+cambio1l2+" "+cambio2l2+" "+cambio3l2+" "+salidal2);
+    }
+    //***************Fin de Recepcion de datos del Código de FB***************************** 
