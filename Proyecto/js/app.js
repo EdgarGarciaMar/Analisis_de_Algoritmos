@@ -24,6 +24,14 @@ var cy = cytoscape({
         'target-arrow-color': '#61bffc',
         'transition-property': 'background-color, line-color, target-arrow-color',
         'transition-duration': '0.2s'
+      })
+      .selector('.dishighlighted')
+      .style({
+        'background-color': '#ddd',
+        'line-color': '#ddd',
+        'target-arrow-color': '#ddd',
+        'transition-property': 'background-color, line-color, target-arrow-color',
+        'transition-duration': '0.2s'
       }),
 
   elements: {
@@ -69,8 +77,9 @@ var cy = cytoscape({
 });
 
 var bfs = cy.elements().bfs('#a', function(){}, true);
+var bfs2 = cy.elements().bfs('#g', function(){}, true);
 
-var i = 0;
+var i = 0,i2=0;
 var highlightNextEle = function(){
   if( i < bfs.path.length ){
     bfs.path[i].addClass('highlighted');
@@ -81,28 +90,52 @@ var highlightNextEle = function(){
 };
 
 // kick off first highlight
-highlightNextEle();
+//highlightNextEle();
 //***************Código de DP***************************** 
 function carAssembleTime(a , t , e , x) {
-  var n = a[0].length;
-
+  var n = a[0].length;//numero de nodos, en este caso son 8
+  var iterador=3;
+  var iterador2=3;
   // time taken to leave first station in line 1
   var first = e[0] + a[0][0];
+ 
 
   // time taken to leave first station in line 2
   var second = e[1] + a[1][0];
+  
+  if(first<second){
+    bfs.path[0].addClass('highlighted');
+    setTimeout(bfs.path[1].addClass('highlighted'), 1000); 
+    setTimeout(bfs.path[2].addClass('highlighted'), 1000);
+  }
+  else{
+    bfs2.path[0].addClass('highlighted');
+    setTimeout(bfs2.path[1].addClass('highlighted'), 1000);
+    setTimeout(bfs2.path[2].addClass('highlighted'), 1000);
+  }
+  if(first==second){
+    bfs.path[0].addClass('highlighted');
+    setTimeout(bfs.path[1].addClass('highlighted'), 1000); 
+    setTimeout(bfs.path[2].addClass('highlighted'), 1000);
+
+    bfs2.path[0].addClass('highlighted');
+    setTimeout(bfs2.path[1].addClass('highlighted'), 1000);
+    setTimeout(bfs2.path[2].addClass('highlighted'), 1000);
+  }
 
   for (var i = 1; i < n; i++) {
       var up = Math.min(first + a[0][i], second + t[1][i] + a[0][i]),
               down = Math.min(second + a[1][i], first + t[0][i] + a[1][i]);
       first = up;
       second = down;
+
   }
 
   first += x[0];
   second += x[1];
-
-  return Math.min(first, second);
+  //setTimeout(bfs2.path[2].addClass('dishighlighted'), 1000);
+  var final = Math.min(first,second);
+  return final;
   }
 //***************Fin Código de DP***************************** 
 //*************** Código de FB***************************** 
