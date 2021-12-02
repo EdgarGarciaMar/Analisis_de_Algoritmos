@@ -13,9 +13,10 @@ body {
   padding: 10px;
 }
 #cy {
-  border: 2px solid rgb(216, 8, 8);
+  border: 2px solid rgb(28, 134, 233);
   margin: 80px;
   padding: 10px;
+  background-color: #ffffff;
 }
 /*Medias responsivas 1-2-3 columnas*/
 @media only screen and (max-width: 500px) {

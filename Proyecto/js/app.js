@@ -28,42 +28,43 @@ var cy = cytoscape({
 
   elements: {
       nodes: [
-        { data: { id: 'a' } },
-        { data: { id: 'b' } },
-        { data: { id: 'c' } },
-        { data: { id: 'd' } },
-        { data: { id: 'e' } },
-        { data: { id: 'f' } }
+        { data: { id: 'a'},position: {x:0.0,y:0.0} },
+        { data: { id: 'b'},position: {x:50.0,y:0.0}},
+        { data: { id: 'c'},position: {x:100.0,y:0.0} },
+        { data: { id: 'd'},position: {x:150.0,y:0.0} },
+        { data: { id: 'e'},position: {x:200.0,y:0.0} },
+        { data: { id: 'f'},position: {x:250.0,y:0.0}},
+        { data: { id: 'g'},position: {x:0.0,y:60.0} },
+        { data: { id: 'h'},position: {x:50.0,y:60.0} },
+        { data: { id: 'i'},position: {x:100.0,y:60.0} },
+        { data: { id: 'j'},position: {x:150.0,y:60.0} },
+        { data: { id: 'k'},position: {x:200.0,y:60.0} },
+        { data: { id: 'l'},position: {x:250.0,y:60.0}}
       ],
 
       edges: [
         { data: { id: 'ab', weight: 2, source: 'a', target: 'b' } },
-        { data: { id: 'ae', weight: 2, source: 'a', target: 'e' } },
         { data: { id: 'bc', weight: 2, source: 'b', target: 'c' } },
-        { data: { id: 'bf', weight: 2, source: 'b', target: 'f' } },
+        { data: { id: 'cd', weight: 2, source: 'c', target: 'd' } },
         { data: { id: 'de', weight: 2, source: 'd', target: 'e' } },
-        { data: { id: 'db', weight: 2, source: 'd', target: 'b' } },
-        { data: { id: 'ec', weight: 2, source: 'e', target: 'c' } },
-        { data: { id: 'ef', weight: 2, source: 'e', target: 'f' } }
+        { data: { id: 'ef', weight: 2, source: 'e', target: 'f' } },
+        { data: { id: 'gh', weight: 2, source: 'g', target: 'h' } },
+        { data: { id: 'hi', weight: 2, source: 'h', target: 'i' } },
+        { data: { id: 'ij', weight: 2, source: 'i', target: 'j' } },
+        { data: { id: 'jk', weight: 2, source: 'j', target: 'k' } },
+        { data: { id: 'kl', weight: 2, source: 'k', target: 'l' } },
+        { data: { id: 'bi', weight: 2, source: 'b', target: 'i' } },
+        { data: { id: 'hc', weight: 2, source: 'h', target: 'c' } },
+        { data: { id: 'id', weight: 2, source: 'i', target: 'd' } },
+        { data: { id: 'cj', weight: 2, source: 'c', target: 'j' } },
+        { data: { id: 'je', weight: 2, source: 'j', target: 'e' } },
+        { data: { id: 'dk', weight: 2, source: 'd', target: 'k' } }
       ]
     },
 
-      /*edges: [
-        { data: { id: 'ae', weight: 1, source: 'a', target: 'e' } },
-        { data: { id: 'ab', weight: 3, source: 'a', target: 'b' } },
-        { data: { id: 'be', weight: 4, source: 'b', target: 'e' } },
-        { data: { id: 'bc', weight: 5, source: 'b', target: 'c' } },
-        { data: { id: 'ce', weight: 6, source: 'c', target: 'e' } },
-        { data: { id: 'cd', weight: 2, source: 'c', target: 'd' } },
-        { data: { id: 'de', weight: 7, source: 'd', target: 'e' } }
-      ]
-    },*/
 
   layout: {
-    name: 'breadthfirst',
-    directed: true,
-    roots: '#h',
-    padding: 10
+    name: 'preset'
   }
 });
 
