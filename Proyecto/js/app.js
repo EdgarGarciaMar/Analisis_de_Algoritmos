@@ -88,14 +88,55 @@ var highlightNextEle = function(){
     setTimeout(highlightNextEle, 1000);
   }
 };
+/*Mapa de los nodos y de sus apuntadores al siguiente nodo */
+
+//**************************Tiempo incial 1, flecha de entrada al primer nodo, primera estacion de la linea 1
+//bfs.path[0].addClass('highlighted');//a
+//bfs.path[1].addClass('highlighted');//ab 
+//bfs.path[2].addClass('highlighted');//b
+
+//**************************Nodos para desplazarce por la linea 1
+//bfs.path[3].addClass('highlighted')//bc
+//bfs.path[4].addClass('highlighted');//c
+//bfs.path[5].addClass('highlighted');//bi
+//bfs.path[6].addClass('highlighted');//i
+//bfs.path[7].addClass('highlighted');//cd
+//bfs.path[8].addClass('highlighted');//d
+//bfs.path[9].addClass('highlighted');//cj
+//bfs.path[10].addClass('highlighted');//j
+//bfs.path[11].addClass('highlighted');//de
+//bfs.path[12].addClass('highlighted');//e
+//bfs.path[13].addClass('highlighted');//dk
+//bfs.path[14].addClass('highlighted');//k
+//bfs.path[15].addClass('highlighted');//ef
+//bfs.path[16].addClass('highlighted');//f
+
+//**************************Tiempo incial 2, flecha de entrada al primer nodo, primera estacion de la linea 2
+//bfs2.path[0].addClass('highlighted');//g
+//bfs2.path[1].addClass('highlighted');//gh
+//bfs2.path[2].addClass('highlighted');//h
+
+//**************************Nodos para desplazarce por la linea 2
+//bfs2.path[3].addClass('highlighted')//hi
+//bfs2.path[4].addClass('highlighted');//i
+//bfs2.path[5].addClass('highlighted');//hc
+//bfs2.path[6].addClass('highlighted');//c
+//bfs2.path[7].addClass('highlighted');//ij
+//bfs2.path[8].addClass('highlighted');//j
+//bfs2.path[9].addClass('highlighted');//id
+//bfs2.path[10].addClass('highlighted');//d
+//bfs2.path[11].addClass('highlighted');//jk
+//bfs2.path[12].addClass('highlighted');//k
+//bfs2.path[13].addClass('highlighted');//je
+//bfs2.path[14].addClass('highlighted');//e
+//bfs2.path[15].addClass('highlighted');//kl
+//bfs2.path[16].addClass('highlighted');//l
 
 // kick off first highlight
 //highlightNextEle();
 //***************Código de DP***************************** 
 function carAssembleTime(a , t , e , x) {
-  var n = a[0].length;//numero de nodos, en este caso son 8
-  var iterador=3;
-  var iterador2=3;
+  var n = a[0].length;//numero de nodos, en este caso son 4
   // time taken to leave first station in line 1
   var first = e[0] + a[0][0];
  
@@ -122,19 +163,116 @@ function carAssembleTime(a , t , e , x) {
     setTimeout(bfs2.path[1].addClass('highlighted'), 1000);
     setTimeout(bfs2.path[2].addClass('highlighted'), 1000);
   }
-
+  var iteracion1=new Array();
+  var iteracion1=new Array();
+  var iteracion1=new Array();
+  
   for (var i = 1; i < n; i++) {
-      var up = Math.min(first + a[0][i], second + t[1][i] + a[0][i]),
-              down = Math.min(second + a[1][i], first + t[0][i] + a[1][i]);
+    var siguienteUP =first + a[0][i];
+    var cambiolinUP =second + t[1][i] + a[0][i];
+
+    var siguienteDOWN=second + a[1][i];
+    var cambiolinDOWN=first + t[0][i] + a[1][i];
+
+      var up = Math.min(siguienteUP, cambiolinUP),
+              down = Math.min(siguienteDOWN, cambiolinDOWN);
       first = up;
       second = down;
 
+      if(i==1){
+      if(up<down){
+        if(up==siguienteUP){
+          setTimeout(bfs.path[3].addClass('highlighted'), 1000);//bc
+          setTimeout(bfs.path[4].addClass('highlighted'), 1000);//c
+        }else{
+          setTimeout(bfs2.path[5].addClass('highlighted'), 1000);//hc
+          setTimeout(bfs2.path[6].addClass('highlighted'), 1000);//c
+        }
+      }
+      else{
+        if(down==siguienteDOWN){
+          setTimeout(bfs2.path[3].addClass('highlighted'), 1000);//hi
+          setTimeout(bfs2.path[4].addClass('highlighted'), 1000);//i
+        }else{
+          setTimeout(bfs.path[5].addClass('highlighted'), 1000);//bi
+          setTimeout(bfs.path[6].addClass('highlighted'), 1000);//i
+        }
+      }
+      console.log("iteracion 1");
+      console.log(siguienteUP+","+cambiolinUP);
+      console.log(siguienteDOWN+","+cambiolinDOWN);
+    }
+    if(i==2){
+      if(up<down){
+        if(up==siguienteUP){
+          setTimeout(bfs.path[7].addClass('highlighted'), 1000);//cd
+          setTimeout(bfs.path[8].addClass('highlighted'), 1000);//d
+        }else{
+          setTimeout(bfs2.path[9].addClass('highlighted'), 1000);//id
+          setTimeout(bfs2.path[10].addClass('highlighted'), 1000);//d
+        }
+      }
+      else{
+        if(down==siguienteDOWN){
+          setTimeout(bfs2.path[7].addClass('highlighted'), 1000);//ij
+          setTimeout(bfs2.path[8].addClass('highlighted'), 1000);//j
+        }else{
+          setTimeout(bfs.path[9].addClass('highlighted'), 1000);//cj
+          setTimeout(bfs.path[10].addClass('highlighted'), 1000);//j
+        }
+      }
+      console.log("iteracion 2");
+      console.log(siguienteUP+","+cambiolinUP);
+      console.log(siguienteDOWN+","+cambiolinDOWN);
+    }
+
+    if(i==3){
+      if(up<down){
+        if(up==siguienteUP){
+          setTimeout(bfs.path[11].addClass('highlighted'), 1000);//de
+          setTimeout(bfs.path[12].addClass('highlighted'), 1000);//e
+        }else{
+          setTimeout(bfs2.path[13].addClass('highlighted'), 1000);//je
+          setTimeout(bfs2.path[14].addClass('highlighted'), 1000);//e
+        }
+      }
+      else{
+        if(down==siguienteDOWN){
+          setTimeout(bfs2.path[11].addClass('highlighted'), 1000);//jk
+          setTimeout(bfs2.path[12].addClass('highlighted'), 1000);//k
+        }else{
+          setTimeout(bfs.path[13].addClass('highlighted'), 1000);//dk
+          setTimeout(bfs.path[14].addClass('highlighted'), 1000);//k
+        }
+      }
+      console.log("iteracion 3");
+      console.log(siguienteUP+","+cambiolinUP);
+      console.log(siguienteDOWN+","+cambiolinDOWN);
+    }
   }
 
   first += x[0];
   second += x[1];
-  //setTimeout(bfs2.path[2].addClass('dishighlighted'), 1000);
   var final = Math.min(first,second);
+  //correccion de casos especiales
+  if(first>second){
+    setTimeout(bfs.path[11].addClass('dishighlighted'), 1000);//de
+    setTimeout(bfs.path[12].addClass('dishighlighted'), 1000);//e
+  }
+  else{
+    setTimeout(bfs2.path[11].addClass('dishighlighted'), 1000);//jk
+    setTimeout(bfs2.path[12].addClass('dishighlighted'), 1000);//k
+  }
+
+  //parte final
+  if(first==final){
+    setTimeout(bfs.path[15].addClass('highlighted'), 1000);//ef
+    setTimeout(bfs.path[16].addClass('highlighted'), 1000);//f
+  }
+  else{
+    setTimeout(bfs2.path[15].addClass('highlighted'), 1000);//kl
+    setTimeout(bfs2.path[16].addClass('highlighted'), 1000);//l
+  }
   return final;
   }
 //***************Fin Código de DP***************************** 
