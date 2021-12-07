@@ -275,7 +275,7 @@ function carAssembleTime(a , t , e , x) {
   first += x[0];
   second += x[1];
   var final = Math.min(first,second);
-  var reacomodo;
+  var reacomodo,reacomodo2;
   //correccion de casos especiales
   //Cuando el final es abajo y todo viene pintado arriba
   if(first>second){
@@ -290,6 +290,15 @@ function carAssembleTime(a , t , e , x) {
     if(reacomodo == final){
     setTimeout(bfs.path[13].addClass('highlighted'), 1000);//dk
     setTimeout(bfs.path[14].addClass('highlighted'), 1000);//k
+    //quitar el caso de cuando las 2 entradas son iguales, en este caso, la parte
+    //de abajo se queda coloreada, pero no es parte de la secuencia final
+    reacomodo=e[0] + a[0][0];
+    reacomodo2= e[1] + a[1][0];
+    if(reacomodo == reacomodo2){
+    setTimeout(bfs2.path[0].addClass('dishighlighted'), 1000);//g
+    setTimeout(bfs2.path[1].addClass('dishighlighted'), 1000);//gh
+    setTimeout(bfs2.path[2].addClass('dishighlighted'), 1000);//h
+    }
     }
     else{
     setTimeout(bfs.path[7].addClass('dishighlighted'), 1000);//cd
@@ -302,9 +311,13 @@ function carAssembleTime(a , t , e , x) {
     setTimeout(bfs2.path[12].addClass('highlighted'), 1000);//k
     //quitar el caso de cuando las 2 entradas son iguales, en este caso, la parte
     //de abajo se queda coloreada, pero no es parte de la secuencia final
-      setTimeout(bfs2.path[0].addClass('dishighlighted'), 1000);//g
-      setTimeout(bfs2.path[1].addClass('dishighlighted'), 1000);//gh
-      setTimeout(bfs2.path[2].addClass('dishighlighted'), 1000);//h
+    reacomodo=e[0] + a[0][0];
+    reacomodo2= e[1] + a[1][0];
+    if(reacomodo == reacomodo2){
+    setTimeout(bfs2.path[0].addClass('dishighlighted'), 1000);//g
+    setTimeout(bfs2.path[1].addClass('dishighlighted'), 1000);//gh
+    setTimeout(bfs2.path[2].addClass('dishighlighted'), 1000);//h
+    }
     }
     else{
       setTimeout(bfs.path[3].addClass('dishighlighted'), 1000);//bc
