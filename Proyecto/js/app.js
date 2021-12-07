@@ -276,7 +276,9 @@ function carAssembleTime(a , t , e , x) {
   second += x[1];
   var final = Math.min(first,second);
   var reacomodo;
+  var iniciocorr;
   //correccion de casos especiales
+  //Cuando el final es abajo y todo viene pintado arriba
   if(first>second){
     setTimeout(bfs.path[11].addClass('dishighlighted'), 1000);//de
     setTimeout(bfs.path[12].addClass('dishighlighted'), 1000);//e
@@ -302,7 +304,7 @@ function carAssembleTime(a , t , e , x) {
     //quitar el caso de cuando las 2 entradas son iguales, en este caso, la parte
     //de abajo se queda coloreada, pero no es parte de la secuencia final
     reacomodo=e[1] + a[1][0]+a[1][1];
-    var iniciocorr=e[0] + a[0][0]+a[0][1];
+    iniciocorr=e[0] + a[0][0]+a[0][1];
     if(reacomodo != iniciocorr){
       setTimeout(bfs2.path[0].addClass('dishighlighted'), 1000);//g
       setTimeout(bfs2.path[1].addClass('dishighlighted'), 1000);//gh
@@ -315,7 +317,8 @@ function carAssembleTime(a , t , e , x) {
     }
     }
   }
-  else{
+  //Cuando el final es arriba y todo viene iluminado abajo
+  if(second>first){
     setTimeout(bfs2.path[11].addClass('dishighlighted'), 1000);//jk
     setTimeout(bfs2.path[12].addClass('dishighlighted'), 1000);//k
   }
