@@ -163,10 +163,12 @@ function carAssembleTime(a , t , e , x) {
     setTimeout(bfs2.path[1].addClass('highlighted'), 1000);
     setTimeout(bfs2.path[2].addClass('highlighted'), 1000);
   }
-  var iteracion1=new Array();
-  var iteracion1=new Array();
-  var iteracion1=new Array();
-  
+  var iteracionsiguienteUP=new Array();
+  var iteracioncambiolinUP=new Array();
+  var iteracionsiguienteDOWN=new Array();
+  var iteracioncambiolinDOWN=new Array();
+
+
   for (var i = 1; i < n; i++) {
     var siguienteUP =first + a[0][i];
     var cambiolinUP =second + t[1][i] + a[0][i];
@@ -201,6 +203,10 @@ function carAssembleTime(a , t , e , x) {
       console.log("iteracion 1");
       console.log(siguienteUP+","+cambiolinUP);
       console.log(siguienteDOWN+","+cambiolinDOWN);
+      iteracionsiguienteUP.push(siguienteUP);
+      iteracioncambiolinUP.push(cambiolinUP);
+      iteracionsiguienteDOWN.push(siguienteDOWN);
+      iteracioncambiolinDOWN.push(cambiolinDOWN);
     }
     if(i==2){
       if(up<down){
@@ -224,6 +230,10 @@ function carAssembleTime(a , t , e , x) {
       console.log("iteracion 2");
       console.log(siguienteUP+","+cambiolinUP);
       console.log(siguienteDOWN+","+cambiolinDOWN);
+      iteracionsiguienteUP.push(siguienteUP);
+      iteracioncambiolinUP.push(cambiolinUP);
+      iteracionsiguienteDOWN.push(siguienteDOWN);
+      iteracioncambiolinDOWN.push(cambiolinDOWN);
     }
 
     if(i==3){
@@ -248,7 +258,18 @@ function carAssembleTime(a , t , e , x) {
       console.log("iteracion 3");
       console.log(siguienteUP+","+cambiolinUP);
       console.log(siguienteDOWN+","+cambiolinDOWN);
+      iteracionsiguienteUP.push(siguienteUP);
+      iteracioncambiolinUP.push(cambiolinUP);
+      iteracionsiguienteDOWN.push(siguienteDOWN);
+      iteracioncambiolinDOWN.push(cambiolinDOWN);
     }
+  }
+
+  for(var i=0;i<3;i++){
+    console.log("siguienteUP:"+iteracionsiguienteUP[i]);
+    console.log("cambiolinUP:"+iteracioncambiolinUP[i]);
+    console.log("siguienteDOWN:"+iteracionsiguienteDOWN[i]);
+    console.log("cambiolinDOWN:"+iteracioncambiolinDOWN[i]);
   }
 
   first += x[0];
