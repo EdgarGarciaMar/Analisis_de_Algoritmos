@@ -275,10 +275,45 @@ function carAssembleTime(a , t , e , x) {
   first += x[0];
   second += x[1];
   var final = Math.min(first,second);
+  var reacomodo;
   //correccion de casos especiales
   if(first>second){
     setTimeout(bfs.path[11].addClass('dishighlighted'), 1000);//de
     setTimeout(bfs.path[12].addClass('dishighlighted'), 1000);//e
+    reacomodo=iteracionsiguienteUP[1]+a[1][3]+t[0][3]+x[1];
+    /*console.log(iteracionsiguienteUP[1]);//22
+    console.log(a[1][3]);//4
+    console.log(t[0][3]);//5
+    console.log(x[1]);//7
+    console.log(reacomodo);*/
+    if(reacomodo == final){
+    setTimeout(bfs.path[13].addClass('highlighted'), 1000);//dk
+    setTimeout(bfs.path[14].addClass('highlighted'), 1000);//k
+    }
+    else{
+    setTimeout(bfs.path[7].addClass('dishighlighted'), 1000);//cd
+    setTimeout(bfs.path[8].addClass('dishighlighted'), 1000);//d
+    reacomodo=iteracionsiguienteUP[0]+t[0][2]+a[1][2]+a[1][3]+x[1];
+    if(reacomodo == final){
+    setTimeout(bfs.path[9].addClass('highlighted'), 1000);//cj
+    setTimeout(bfs.path[10].addClass('highlighted'), 1000);//j
+    setTimeout(bfs2.path[11].addClass('highlighted'), 1000);//jk
+    setTimeout(bfs2.path[12].addClass('highlighted'), 1000);//k
+    //quitar el caso de cuando las 2 entradas son iguales, en este caso, la parte
+    //de abajo se queda coloreada, pero no es parte de la secuencia final
+    reacomodo=e[1] + a[1][0]+a[1][1];
+    var iniciocorr=e[0] + a[0][0]+a[0][1];
+    if(reacomodo != iniciocorr){
+      setTimeout(bfs2.path[0].addClass('dishighlighted'), 1000);//g
+      setTimeout(bfs2.path[1].addClass('dishighlighted'), 1000);//gh
+      setTimeout(bfs2.path[2].addClass('dishighlighted'), 1000);//h
+    }
+    }
+    else{
+      setTimeout(bfs.path[3].addClass('dishighlighted'), 1000);//bc
+      setTimeout(bfs.path[4].addClass('dishighlighted'), 1000);//c
+    }
+    }
   }
   else{
     setTimeout(bfs2.path[11].addClass('dishighlighted'), 1000);//jk
