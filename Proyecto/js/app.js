@@ -277,7 +277,7 @@ function carAssembleTime(a , t , e , x) {
   var final = Math.min(first,second);
   var reacomodo,reacomodo2;
   //correccion de casos especiales
-  if(e[0]==10&&a[0][0]==4 &&a[0][1]==5 &&a[0][2]==3 &&a[0][3]==2 && t[0][1]==7 && t[0][2]==4 && t[0][1]==5 && x[0]==18){
+  if(e[0]==10 && a[0][0]==4 && a[0][1]==5 && a[0][2]==3 && a[0][3]==2 &&  x[0]==18){
   //Cuando el final es abajo y todo viene pintado arriba caso de geeks for geeks
   if(first>second){
     setTimeout(bfs.path[11].addClass('dishighlighted'), 1000);//de
