@@ -42,6 +42,36 @@ var cy = cytoscape({
         'line-color': '#ddd',
         'target-arrow-color': '#ddd'
       })
+      .selector('#bi')
+      .style({
+        "text-margin-x": "-10px",
+        "text-margin-y": "-10px"
+      })
+      .selector('#cj')
+      .style({
+        "text-margin-x": "-10px",
+        "text-margin-y": "-10px"
+      })
+      .selector('#dk')
+      .style({
+        "text-margin-x": "-10px",
+        "text-margin-y": "-10px"
+      })
+      .selector('#hc')
+      .style({
+        "text-margin-x": "-10px",
+        "text-margin-y": "12px"
+      })
+      .selector('#id')
+      .style({
+        "text-margin-x": "-10px",
+        "text-margin-y": "12px"
+      })
+      .selector('#je')
+      .style({
+        "text-margin-x": "-10px",
+        "text-margin-y": "12px"
+      })
     .selector('.highlighted')
       .style({
         'background-color': '#61bffc',
@@ -449,8 +479,61 @@ function MejorRecorrido(linea,estacion,tiempoant){
 //***************Fin Código de FB***************************** 
 //***************Recepcion de datos del Código de DP***************************** 
 var obtenerdatos=function () {
+  cy.elements().remove();
+   entradal1 = parseInt(document.getElementById("entradaL1").value);//a
+   nodo1l1 = parseInt(document.getElementById("nodo1-1").value);//b
+   nodo2l1 = parseInt(document.getElementById("nodo1-2").value);//c
+   nodo3l1 = parseInt(document.getElementById("nodo1-3").value);//d
+   nodo4l1 = parseInt(document.getElementById("nodo1-4").value);//e
+   cambio1l1 = parseInt(document.getElementById("cambiol1-l2-1").value);
+   cambio2l1 = parseInt(document.getElementById("cambiol1-l2-2").value);
+   cambio3l1 = parseInt(document.getElementById("cambiol1-l2-3").value);
+   salidal1 = parseInt(document.getElementById("salidaL1").value);//f
+  
+   entradal2 = parseInt(document.getElementById("entradaL2").value);//g
+   nodo1l2 = parseInt(document.getElementById("nodo2-1").value);//h
+   nodo2l2 = parseInt(document.getElementById("nodo2-2").value);//i
+   nodo3l2 = parseInt(document.getElementById("nodo2-3").value);//j
+   nodo4l2 = parseInt(document.getElementById("nodo2-4").value);//k
+   cambio1l2 = parseInt(document.getElementById("cambiol2-l1-1").value);
+   cambio2l2 = parseInt(document.getElementById("cambiol2-l1-2").value);
+   cambio3l2 = parseInt(document.getElementById("cambiol2-l1-3").value);
+   salidal2 = parseInt(document.getElementById("salidaL2").value);//l
+   cy.add([
+    { group: 'nodes',data: { id: 'a',label: entradal1},position: {x:0.0,y:0.0}},
+    { group: 'nodes',data: { id: 'b',label: nodo1l1},position: {x:50.0,y:0.0}},
+    { group: 'nodes',data: { id: 'c',label: nodo2l1},position: {x:100.0,y:0.0} },
+    { group: 'nodes',data: { id: 'd',label: nodo3l1},position: {x:150.0,y:0.0} },
+    { group: 'nodes',data: { id: 'e',label: nodo4l1},position: {x:200.0,y:0.0} },
+    { group: 'nodes',data: { id: 'f',label: salidal1},position: {x:250.0,y:0.0}},
+    { group: 'nodes',data: { id: 'g',label: entradal2},position: {x:0.0,y:60.0} },
+    { group: 'nodes',data: { id: 'h',label: nodo1l2},position: {x:50.0,y:60.0} },
+    { group: 'nodes',data: { id: 'i',label: nodo2l2},position: {x:100.0,y:60.0} },
+    { group: 'nodes',data: { id: 'j',label: nodo3l2},position: {x:150.0,y:60.0} },
+    { group: 'nodes',data: { id: 'k',label: nodo4l2},position: {x:200.0,y:60.0} },
+    { group: 'nodes',data: { id: 'l',label: salidal2},position: {x:250.0,y:60.0}},
+    
 
-
+    { group: 'edges',data: { id: 'ab', weight: 2, source: 'a', target: 'b' ,label:''} },
+    { group: 'edges',data: { id: 'bc', weight: 2, source: 'b', target: 'c' ,label:''} },
+    { group: 'edges',data: { id: 'cd', weight: 2, source: 'c', target: 'd' ,label:''} },
+    { group: 'edges',data: { id: 'de', weight: 2, source: 'd', target: 'e' ,label:''} },
+    { group: 'edges',data: { id: 'ef', weight: 2, source: 'e', target: 'f' ,label:''} },
+    { group: 'edges',data: { id: 'gh', weight: 2, source: 'g', target: 'h' ,label:''} },
+    { group: 'edges',data: { id: 'hi', weight: 2, source: 'h', target: 'i' ,label:''} },
+    { group: 'edges',data: { id: 'ij', weight: 2, source: 'i', target: 'j' ,label:''} },
+    { group: 'edges',data: { id: 'jk', weight: 2, source: 'j', target: 'k' ,label:''} },
+    { group: 'edges',data: { id: 'kl', weight: 2, source: 'k', target: 'l' ,label:''} },
+    { group: 'edges',data: { id: 'bi', weight: 2, source: 'b', target: 'i' ,label:cambio1l1}},
+    { group: 'edges',data: { id: 'hc', weight: 2, source: 'h', target: 'c' ,label:cambio1l2}},
+    { group: 'edges',data: { id: 'id', weight: 2, source: 'i', target: 'd' ,label:cambio2l2}},
+    { group: 'edges',data: { id: 'cj', weight: 2, source: 'c', target: 'j' ,label:cambio2l1}},
+    { group: 'edges',data: { id: 'je', weight: 2, source: 'j', target: 'e' ,label:cambio3l2}},
+    { group: 'edges',data: { id: 'dk', weight: 2, source: 'd', target: 'k' ,label:cambio3l1}}
+    
+  ]);
+   bfs = cy.elements().bfs('#a', function(){}, true);
+   bfs2 = cy.elements().bfs('#g', function(){}, true);
     var entrada=new Array();
     entrada.push(entradal1);
     entrada.push(entradal2);
