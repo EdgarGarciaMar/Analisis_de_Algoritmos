@@ -1,7 +1,26 @@
+var entradal1 = parseInt(document.getElementById("entradaL1").value);//a
+var nodo1l1 = parseInt(document.getElementById("nodo1-1").value);//b
+var nodo2l1 = parseInt(document.getElementById("nodo1-2").value);//c
+var nodo3l1 = parseInt(document.getElementById("nodo1-3").value);//d
+var nodo4l1 = parseInt(document.getElementById("nodo1-4").value);//e
+var cambio1l1 = parseInt(document.getElementById("cambiol1-l2-1").value);
+var cambio2l1 = parseInt(document.getElementById("cambiol1-l2-2").value);
+var cambio3l1 = parseInt(document.getElementById("cambiol1-l2-3").value);
+var salidal1 = parseInt(document.getElementById("salidaL1").value);//f
+
+var entradal2 = parseInt(document.getElementById("entradaL2").value);//g
+var nodo1l2 = parseInt(document.getElementById("nodo2-1").value);//h
+var nodo2l2 = parseInt(document.getElementById("nodo2-2").value);//i
+var nodo3l2 = parseInt(document.getElementById("nodo2-3").value);//j
+var nodo4l2 = parseInt(document.getElementById("nodo2-4").value);//k
+var cambio1l2 = parseInt(document.getElementById("cambiol2-l1-1").value);
+var cambio2l2 = parseInt(document.getElementById("cambiol2-l1-2").value);
+var cambio3l2 = parseInt(document.getElementById("cambiol2-l1-3").value);
+var salidal2 = parseInt(document.getElementById("salidaL2").value);//l
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-
 
 var cy = cytoscape({
   container: document.getElementById('cy'),
@@ -12,10 +31,11 @@ var cy = cytoscape({
   style: cytoscape.stylesheet()
     .selector('node')
       .style({
-        'content': 'data(id)'
+        'content': 'data(label)'
       })
     .selector('edge')
       .style({
+        'content': 'data(label)',
         'curve-style': 'bezier',
         'target-arrow-shape': 'triangle',
         'width': 4,
@@ -40,39 +60,39 @@ var cy = cytoscape({
       }),
 
   elements: {
-      nodes: [
-        { data: { id: 'a'},position: {x:0.0,y:0.0} },
-        { data: { id: 'b'},position: {x:50.0,y:0.0}},
-        { data: { id: 'c'},position: {x:100.0,y:0.0} },
-        { data: { id: 'd'},position: {x:150.0,y:0.0} },
-        { data: { id: 'e'},position: {x:200.0,y:0.0} },
-        { data: { id: 'f'},position: {x:250.0,y:0.0}},
-        { data: { id: 'g'},position: {x:0.0,y:60.0} },
-        { data: { id: 'h'},position: {x:50.0,y:60.0} },
-        { data: { id: 'i'},position: {x:100.0,y:60.0} },
-        { data: { id: 'j'},position: {x:150.0,y:60.0} },
-        { data: { id: 'k'},position: {x:200.0,y:60.0} },
-        { data: { id: 'l'},position: {x:250.0,y:60.0}}
-      ],
+    nodes: [
+      { data: { id: 'a',label: entradal1},position: {x:0.0,y:0.0}},
+      { data: { id: 'b',label: nodo1l1},position: {x:50.0,y:0.0}},
+      { data: { id: 'c',label: nodo2l1},position: {x:100.0,y:0.0} },
+      { data: { id: 'd',label: nodo3l1},position: {x:150.0,y:0.0} },
+      { data: { id: 'e',label: nodo4l1},position: {x:200.0,y:0.0} },
+      { data: { id: 'f',label: salidal1},position: {x:250.0,y:0.0}},
+      { data: { id: 'g',label: entradal2},position: {x:0.0,y:60.0} },
+      { data: { id: 'h',label: nodo1l2},position: {x:50.0,y:60.0} },
+      { data: { id: 'i',label: nodo2l2},position: {x:100.0,y:60.0} },
+      { data: { id: 'j',label: nodo3l2},position: {x:150.0,y:60.0} },
+      { data: { id: 'k',label: nodo4l2},position: {x:200.0,y:60.0} },
+      { data: { id: 'l',label: salidal2},position: {x:250.0,y:60.0}}
+    ],
 
-      edges: [
-        { data: { id: 'ab', weight: 2, source: 'a', target: 'b' } },
-        { data: { id: 'bc', weight: 2, source: 'b', target: 'c' } },
-        { data: { id: 'cd', weight: 2, source: 'c', target: 'd' } },
-        { data: { id: 'de', weight: 2, source: 'd', target: 'e' } },
-        { data: { id: 'ef', weight: 2, source: 'e', target: 'f' } },
-        { data: { id: 'gh', weight: 2, source: 'g', target: 'h' } },
-        { data: { id: 'hi', weight: 2, source: 'h', target: 'i' } },
-        { data: { id: 'ij', weight: 2, source: 'i', target: 'j' } },
-        { data: { id: 'jk', weight: 2, source: 'j', target: 'k' } },
-        { data: { id: 'kl', weight: 2, source: 'k', target: 'l' } },
-        { data: { id: 'bi', weight: 2, source: 'b', target: 'i' } },
-        { data: { id: 'hc', weight: 2, source: 'h', target: 'c' } },
-        { data: { id: 'id', weight: 2, source: 'i', target: 'd' } },
-        { data: { id: 'cj', weight: 2, source: 'c', target: 'j' } },
-        { data: { id: 'je', weight: 2, source: 'j', target: 'e' } },
-        { data: { id: 'dk', weight: 2, source: 'd', target: 'k' } }
-      ]
+    edges: [
+      { data: { id: 'ab', weight: 2, source: 'a', target: 'b' ,label:''} },
+      { data: { id: 'bc', weight: 2, source: 'b', target: 'c' ,label:''} },
+      { data: { id: 'cd', weight: 2, source: 'c', target: 'd' ,label:''} },
+      { data: { id: 'de', weight: 2, source: 'd', target: 'e' ,label:''} },
+      { data: { id: 'ef', weight: 2, source: 'e', target: 'f' ,label:''} },
+      { data: { id: 'gh', weight: 2, source: 'g', target: 'h' ,label:''} },
+      { data: { id: 'hi', weight: 2, source: 'h', target: 'i' ,label:''} },
+      { data: { id: 'ij', weight: 2, source: 'i', target: 'j' ,label:''} },
+      { data: { id: 'jk', weight: 2, source: 'j', target: 'k' ,label:''} },
+      { data: { id: 'kl', weight: 2, source: 'k', target: 'l' ,label:''} },
+      { data: { id: 'bi', weight: 2, source: 'b', target: 'i' ,label:cambio1l1}},
+      { data: { id: 'hc', weight: 2, source: 'h', target: 'c' ,label:cambio1l2}},
+      { data: { id: 'id', weight: 2, source: 'i', target: 'd' ,label:cambio2l2}},
+      { data: { id: 'cj', weight: 2, source: 'c', target: 'j' ,label:cambio2l1}},
+      { data: { id: 'je', weight: 2, source: 'j', target: 'e' ,label:cambio3l2}},
+      { data: { id: 'dk', weight: 2, source: 'd', target: 'k' ,label:cambio3l1}}
+    ]
     },
 
 
@@ -429,25 +449,7 @@ function MejorRecorrido(linea,estacion,tiempoant){
 //***************Fin Código de FB***************************** 
 //***************Recepcion de datos del Código de DP***************************** 
 var obtenerdatos=function () {
-    var entradal1 = parseInt(document.getElementById("entradaL1").value);
-    var nodo1l1 = parseInt(document.getElementById("nodo1-1").value);
-    var nodo2l1 = parseInt(document.getElementById("nodo1-2").value);
-    var nodo3l1 = parseInt(document.getElementById("nodo1-3").value);
-    var nodo4l1 = parseInt(document.getElementById("nodo1-4").value);
-    var cambio1l1 = parseInt(document.getElementById("cambiol1-l2-1").value);
-    var cambio2l1 = parseInt(document.getElementById("cambiol1-l2-2").value);
-    var cambio3l1 = parseInt(document.getElementById("cambiol1-l2-3").value);
-    var salidal1 = parseInt(document.getElementById("salidaL1").value);
 
-    var entradal2 = parseInt(document.getElementById("entradaL2").value);
-    var nodo1l2 = parseInt(document.getElementById("nodo2-1").value);
-    var nodo2l2 = parseInt(document.getElementById("nodo2-2").value);
-    var nodo3l2 = parseInt(document.getElementById("nodo2-3").value);
-    var nodo4l2 = parseInt(document.getElementById("nodo2-4").value);
-    var cambio1l2 = parseInt(document.getElementById("cambiol2-l1-1").value);
-    var cambio2l2 = parseInt(document.getElementById("cambiol2-l1-2").value);
-    var cambio3l2 = parseInt(document.getElementById("cambiol2-l1-3").value);
-    var salidal2 = parseInt(document.getElementById("salidaL2").value);
 
     var entrada=new Array();
     entrada.push(entradal1);
