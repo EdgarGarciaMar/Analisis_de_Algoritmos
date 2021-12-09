@@ -24,13 +24,10 @@ body {
   .text-inst {
     text-align: center;
     color: aquamarine;
-    font-size: small;
+    font-size: medium;
     width: 100%;
   }
-  .inst {
-    /*Imagen de las instrucciones*/
-    width: 100%;
-  }
+
   .linea1-form {
     float: center;
   }
@@ -54,14 +51,9 @@ body {
     text-align: center;
     color: aquamarine;
     width: 100%;
-    font-size: 25px;
+    font-size: medium;
   }
-  .inst {
-    /*Imagen de las instrucciones*/
-    display: block;
-    margin: auto;
-    width: 60%;
-  }
+
   .linea1-form {
     float: center;
   }
@@ -86,14 +78,6 @@ body {
     color: aquamarine;
     width: 100%;
     font-size: large;
-  }
-  .inst {
-    /*Imagen de las instrucciones*/
-    display: block;
-    margin: auto;
-    position: static;
-    top: 100px;
-    width: 40%;
   }
 
   .linea1-form {
