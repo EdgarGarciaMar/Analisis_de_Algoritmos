@@ -1,3 +1,8 @@
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 var cy = cytoscape({
   container: document.getElementById('cy'),
 
@@ -135,7 +140,7 @@ var highlightNextEle = function(){
 // kick off first highlight
 //highlightNextEle();
 //***************Código de DP***************************** 
-function carAssembleTime(a , t , e , x) {
+async function carAssembleTime(a , t , e , x) {
   var n = a[0].length;//numero de nodos, en este caso son 4
   // time taken to leave first station in line 1
   var first = e[0] + a[0][0];
@@ -146,22 +151,34 @@ function carAssembleTime(a , t , e , x) {
   
   if(first<second){
     bfs.path[0].addClass('highlighted');
+    await sleep(2000);
     setTimeout(bfs.path[1].addClass('highlighted'), 1000); 
+    await sleep(2000);
     setTimeout(bfs.path[2].addClass('highlighted'), 1000);
+    await sleep(2000);
   }
   else{
     bfs2.path[0].addClass('highlighted');
+    await sleep(2000);
     setTimeout(bfs2.path[1].addClass('highlighted'), 1000);
+    await sleep(2000);
     setTimeout(bfs2.path[2].addClass('highlighted'), 1000);
+    await sleep(2000);
   }
   if(first==second){
     bfs.path[0].addClass('highlighted');
+    await sleep(2000);
     setTimeout(bfs.path[1].addClass('highlighted'), 1000); 
+    await sleep(2000);
     setTimeout(bfs.path[2].addClass('highlighted'), 1000);
+    await sleep(2000);
 
     bfs2.path[0].addClass('highlighted');
+    await sleep(2000);
     setTimeout(bfs2.path[1].addClass('highlighted'), 1000);
+    await sleep(2000);
     setTimeout(bfs2.path[2].addClass('highlighted'), 1000);
+    await sleep(2000);
   }
   var iteracionsiguienteUP=new Array();
   var iteracioncambiolinUP=new Array();
@@ -185,19 +202,27 @@ function carAssembleTime(a , t , e , x) {
       if(up<down){
         if(up==siguienteUP){
           setTimeout(bfs.path[3].addClass('highlighted'), 1000);//bc
+          await sleep(2000);
           setTimeout(bfs.path[4].addClass('highlighted'), 1000);//c
+          await sleep(2000);
         }else{
           setTimeout(bfs2.path[5].addClass('highlighted'), 1000);//hc
+          await sleep(2000);
           setTimeout(bfs2.path[6].addClass('highlighted'), 1000);//c
+          await sleep(2000);
         }
       }
       else{
         if(down==siguienteDOWN){
           setTimeout(bfs2.path[3].addClass('highlighted'), 1000);//hi
+          await sleep(2000);
           setTimeout(bfs2.path[4].addClass('highlighted'), 1000);//i
+          await sleep(2000);
         }else{
           setTimeout(bfs.path[5].addClass('highlighted'), 1000);//bi
+          await sleep(2000);
           setTimeout(bfs.path[6].addClass('highlighted'), 1000);//i
+          await sleep(2000);
         }
       }
       console.log("iteracion 1");
@@ -212,19 +237,27 @@ function carAssembleTime(a , t , e , x) {
       if(up<down){
         if(up==siguienteUP){
           setTimeout(bfs.path[7].addClass('highlighted'), 1000);//cd
+          await sleep(2000);
           setTimeout(bfs.path[8].addClass('highlighted'), 1000);//d
+          await sleep(2000);
         }else{
           setTimeout(bfs2.path[9].addClass('highlighted'), 1000);//id
+          await sleep(2000);
           setTimeout(bfs2.path[10].addClass('highlighted'), 1000);//d
+          await sleep(2000);
         }
       }
       else{
         if(down==siguienteDOWN){
           setTimeout(bfs2.path[7].addClass('highlighted'), 1000);//ij
+          await sleep(2000);
           setTimeout(bfs2.path[8].addClass('highlighted'), 1000);//j
+          await sleep(2000);
         }else{
           setTimeout(bfs.path[9].addClass('highlighted'), 1000);//cj
+          await sleep(2000);
           setTimeout(bfs.path[10].addClass('highlighted'), 1000);//j
+          await sleep(2000);
         }
       }
       console.log("iteracion 2");
@@ -240,19 +273,27 @@ function carAssembleTime(a , t , e , x) {
       if(up<down){
         if(up==siguienteUP){
           setTimeout(bfs.path[11].addClass('highlighted'), 1000);//de
+          await sleep(2000);
           setTimeout(bfs.path[12].addClass('highlighted'), 1000);//e
+          await sleep(2000);
         }else{
           setTimeout(bfs2.path[13].addClass('highlighted'), 1000);//je
+          await sleep(2000);
           setTimeout(bfs2.path[14].addClass('highlighted'), 1000);//e
+          await sleep(2000);
         }
       }
       else{
         if(down==siguienteDOWN){
           setTimeout(bfs2.path[11].addClass('highlighted'), 1000);//jk
+          await sleep(2000);
           setTimeout(bfs2.path[12].addClass('highlighted'), 1000);//k
+          await sleep(2000);
         }else{
           setTimeout(bfs.path[13].addClass('highlighted'), 1000);//dk
+          await sleep(2000);
           setTimeout(bfs.path[14].addClass('highlighted'), 1000);//k
+          await sleep(2000);
         }
       }
       console.log("iteracion 3");
@@ -281,7 +322,9 @@ function carAssembleTime(a , t , e , x) {
   //Cuando el final es abajo y todo viene pintado arriba caso de geeks for geeks
   if(first>second){
     setTimeout(bfs.path[11].addClass('dishighlighted'), 1000);//de
+    await sleep(2000);
     setTimeout(bfs.path[12].addClass('dishighlighted'), 1000);//e
+    await sleep(2000);
     reacomodo=iteracionsiguienteUP[1]+a[1][3]+t[0][3]+x[1];
     /*console.log(iteracionsiguienteUP[1]);//22
     console.log(a[1][3]);//4
@@ -290,59 +333,82 @@ function carAssembleTime(a , t , e , x) {
     console.log(reacomodo);*/
     if(reacomodo == final){
     setTimeout(bfs.path[13].addClass('highlighted'), 1000);//dk
+    await sleep(2000);
     setTimeout(bfs.path[14].addClass('highlighted'), 1000);//k
+    await sleep(2000);
     //quitar el caso de cuando las 2 entradas son iguales, en este caso, la parte
     //de abajo se queda coloreada, pero no es parte de la secuencia final
     reacomodo=e[0] + a[0][0];
     reacomodo2= e[1] + a[1][0];
     if(reacomodo == reacomodo2){
     setTimeout(bfs2.path[0].addClass('dishighlighted'), 1000);//g
+    await sleep(2000);
     setTimeout(bfs2.path[1].addClass('dishighlighted'), 1000);//gh
+    await sleep(2000);
     setTimeout(bfs2.path[2].addClass('dishighlighted'), 1000);//h
+    await sleep(2000);
     }
     }
     else{
     setTimeout(bfs.path[7].addClass('dishighlighted'), 1000);//cd
+    await sleep(2000);
     setTimeout(bfs.path[8].addClass('dishighlighted'), 1000);//d
+    await sleep(2000);
     reacomodo=iteracionsiguienteUP[0]+t[0][2]+a[1][2]+a[1][3]+x[1];
     if(reacomodo == final){
     setTimeout(bfs.path[9].addClass('highlighted'), 1000);//cj
+    await sleep(2000);
     setTimeout(bfs.path[10].addClass('highlighted'), 1000);//j
+    await sleep(2000);
     setTimeout(bfs2.path[11].addClass('highlighted'), 1000);//jk
+    await sleep(2000);
     setTimeout(bfs2.path[12].addClass('highlighted'), 1000);//k
+    await sleep(2000);
     //quitar el caso de cuando las 2 entradas son iguales, en este caso, la parte
     //de abajo se queda coloreada, pero no es parte de la secuencia final
     reacomodo=e[0] + a[0][0];
     reacomodo2= e[1] + a[1][0];
     if(reacomodo == reacomodo2){
     setTimeout(bfs2.path[0].addClass('dishighlighted'), 1000);//g
+    await sleep(2000);
     setTimeout(bfs2.path[1].addClass('dishighlighted'), 1000);//gh
+    await sleep(2000);
     setTimeout(bfs2.path[2].addClass('dishighlighted'), 1000);//h
+    await sleep(2000);
     }
     }
     else{
       setTimeout(bfs.path[3].addClass('dishighlighted'), 1000);//bc
+      await sleep(2000);
       setTimeout(bfs.path[4].addClass('dishighlighted'), 1000);//c
+      await sleep(2000);
     }
     }
   }
   //Cuando el final es arriba y todo viene iluminado abajo
   if(second>first){
     setTimeout(bfs2.path[11].addClass('dishighlighted'), 1000);//jk
+    await sleep(2000);
     setTimeout(bfs2.path[12].addClass('dishighlighted'), 1000);//k
+    await sleep(2000);
   }
 }
 
   //parte final
   if(first==final){
     setTimeout(bfs.path[15].addClass('highlighted'), 1000);//ef
+    await sleep(2000);
     setTimeout(bfs.path[16].addClass('highlighted'), 1000);//f
+    await sleep(2000);
   }
   else{
     setTimeout(bfs2.path[15].addClass('highlighted'), 1000);//kl
+    await sleep(2000);
     setTimeout(bfs2.path[16].addClass('highlighted'), 1000);//l
+    await sleep(2000);
   }
-  return final;
+  //return final;
+  document.getElementById("resultado").innerHTML = "El Tiempo total del ensamblado es: "+final;
   }
 //***************Fin Código de DP***************************** 
 //*************** Código de FB***************************** 
@@ -392,7 +458,8 @@ var obtenerdatos=function () {
 
     var a=[[nodo1l1,nodo2l1,nodo3l1,nodo4l1],[nodo1l2,nodo2l2,nodo3l2,nodo4l2]];
     var t=[[0,cambio1l1,cambio2l1,cambio3l1],[0,cambio1l2,cambio2l2,cambio3l2]];
-    document.getElementById("resultado").innerHTML = "El Tiempo total del ensamblado es: "+carAssembleTime(a, t, entrada, salida);
+    carAssembleTime(a, t, entrada, salida);
+    
     }
     //***************Fin de Recepcion de datos del Código de DP***************************** 
 //*************** Recepcion de datos del Código de FB***************************** 
