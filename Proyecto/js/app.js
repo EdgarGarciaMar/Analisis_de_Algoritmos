@@ -193,6 +193,10 @@ var highlightNextEle = function(){
 //highlightNextEle();
 //***************Código de DP***************************** 
 async function carAssembleTime(a , t , e , x) {
+  if(entradal1==entradal2==salidal1==salidal2==nodo1l1==nodo2l1==nodo3l1==nodo4l1==nodo1l2==nodo2l2==nodo3l2==nodo4l2==cambio1l1==cambio2l1==cambio3l1==cambio1l2==cambio2l2==cambio3l2){
+    console.log("entro en validar");
+    validar();
+  }
   var n = a[0].length;//numero de nodos, en este caso son 4
   // time taken to leave first station in line 1
   var first = e[0] + a[0][0];
@@ -736,3 +740,69 @@ var obtenerdatos=function () {
        //document.getElementById("resultado").innerHTML = "El Tiempo total del ensamblado es: "+min;
      }
      //***************Fin de pintar camino del Código de FB***************************** 
+    async function validar(){//funcion que valida un caso especial
+       
+        cy.elements().remove();
+        cy.add([
+        { group: 'nodes',data: { id: 'a',label: entradal1},position: {x:0.0,y:0.0}},
+        { group: 'nodes',data: { id: 'b',label: nodo1l1},position: {x:50.0,y:0.0}},
+        { group: 'nodes',data: { id: 'c',label: nodo2l1},position: {x:100.0,y:0.0} },
+        { group: 'nodes',data: { id: 'd',label: nodo3l1},position: {x:150.0,y:0.0} },
+        { group: 'nodes',data: { id: 'e',label: nodo4l1},position: {x:200.0,y:0.0} },
+        { group: 'nodes',data: { id: 'f',label: salidal1},position: {x:250.0,y:0.0}},
+        { group: 'nodes',data: { id: 'g',label: entradal2},position: {x:0.0,y:60.0} },
+        { group: 'nodes',data: { id: 'h',label: nodo1l2},position: {x:50.0,y:60.0} },
+        { group: 'nodes',data: { id: 'i',label: nodo2l2},position: {x:100.0,y:60.0} },
+        { group: 'nodes',data: { id: 'j',label: nodo3l2},position: {x:150.0,y:60.0} },
+        { group: 'nodes',data: { id: 'k',label: nodo4l2},position: {x:200.0,y:60.0} },
+        { group: 'nodes',data: { id: 'l',label: salidal2},position: {x:250.0,y:60.0}},
+        
+    
+        { group: 'edges',data: { id: 'ab', weight: 2, source: 'a', target: 'b' ,label:''} },
+        { group: 'edges',data: { id: 'bc', weight: 2, source: 'b', target: 'c' ,label:''} },
+        { group: 'edges',data: { id: 'cd', weight: 2, source: 'c', target: 'd' ,label:''} },
+        { group: 'edges',data: { id: 'de', weight: 2, source: 'd', target: 'e' ,label:''} },
+        { group: 'edges',data: { id: 'ef', weight: 2, source: 'e', target: 'f' ,label:''} },
+        { group: 'edges',data: { id: 'gh', weight: 2, source: 'g', target: 'h' ,label:''} },
+        { group: 'edges',data: { id: 'hi', weight: 2, source: 'h', target: 'i' ,label:''} },
+        { group: 'edges',data: { id: 'ij', weight: 2, source: 'i', target: 'j' ,label:''} },
+        { group: 'edges',data: { id: 'jk', weight: 2, source: 'j', target: 'k' ,label:''} },
+        { group: 'edges',data: { id: 'kl', weight: 2, source: 'k', target: 'l' ,label:''} },
+        { group: 'edges',data: { id: 'bi', weight: 2, source: 'b', target: 'i' ,label:cambio1l1}},
+        { group: 'edges',data: { id: 'hc', weight: 2, source: 'h', target: 'c' ,label:cambio1l2}},
+        { group: 'edges',data: { id: 'id', weight: 2, source: 'i', target: 'd' ,label:cambio2l2}},
+        { group: 'edges',data: { id: 'cj', weight: 2, source: 'c', target: 'j' ,label:cambio2l1}},
+        { group: 'edges',data: { id: 'je', weight: 2, source: 'j', target: 'e' ,label:cambio3l2}},
+        { group: 'edges',data: { id: 'dk', weight: 2, source: 'd', target: 'k' ,label:cambio3l1}}
+        
+      ]);
+       bfs = cy.elements().bfs('#a', function(){}, true);
+       bfs2 = cy.elements().bfs('#g', function(){}, true);
+
+       bfs.path[0].addClass('highlighted');//a
+       await sleep(1000);
+       bfs.path[1].addClass('highlighted');//ab 
+       await sleep(1000);
+       bfs.path[2].addClass('highlighted');//b
+       await sleep(1000);
+      bfs.path[3].addClass('highlighted')//bc
+      await sleep(1000);
+      bfs.path[4].addClass('highlighted');//c
+      await sleep(1000);
+      bfs.path[7].addClass('highlighted');//cd
+      await sleep(1000);
+      bfs.path[8].addClass('highlighted');//d
+      await sleep(1000);
+      bfs.path[11].addClass('highlighted');//de
+      await sleep(1000);
+      bfs.path[12].addClass('highlighted');//e
+      await sleep(1000);
+      bfs.path[15].addClass('highlighted');//ef
+      await sleep(1000);
+      bfs.path[16].addClass('highlighted');//f
+      await sleep(4000);
+      bfs2.path[15].addClass('highlighted');//kl
+      await sleep(1000);
+      bfs2.path[16].addClass('highlighted');//l
+  
+     }
