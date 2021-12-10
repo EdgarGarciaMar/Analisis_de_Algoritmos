@@ -18,6 +18,8 @@ var cambio2l2 = parseInt(document.getElementById("cambiol2-l1-2").value);
 var cambio3l2 = parseInt(document.getElementById("cambiol2-l1-3").value);
 var salidal2 = parseInt(document.getElementById("salidaL2").value);//l
 
+MR=new Array();
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -134,7 +136,7 @@ var cy = cytoscape({
 var bfs = cy.elements().bfs('#a', function(){}, true);
 var bfs2 = cy.elements().bfs('#g', function(){}, true);
 
-var i = 0,i2=0;
+var i = 0;
 var highlightNextEle = function(){
   if( i < bfs.path.length ){
     bfs.path[i].addClass('highlighted');
@@ -462,14 +464,60 @@ async function carAssembleTime(a , t , e , x) {
   }
 //***************Fin Código de DP***************************** 
 //*************** Código de FB***************************** 
-function MejorRecorrido(linea,estacion,tiempoant){
+var fbi=0,fbi2=0;
+async function MejorRecorrido(linea,estacion,tiempoant){
   tiempoant+=S[linea][estacion];
   if(estacion < 3){
+    if(linea==0){
+      await sleep(2000);
+      bfs.path[fbi].addClass('highlighted');
+      fbi++;
+    }
+    if(linea==1){
+      await sleep(2000);
+      bfs2.path[fbi2].addClass('highlighted');
+      fbi2++;
+    }
     MejorRecorrido(linea, estacion+1, tiempoant);//Llamada a seguir en la linea
     if(linea==1){
+      await sleep(2000);
+      bfs.path[fbi].addClass('highlighted');
+      fbi++;
       cambio=MejorRecorrido(0, estacion+1,tiempoant+t[linea][estacion]);
   }else{
+    await sleep(2000);
+    bfs2.path[fbi2].addClass('highlighted');
+    fbi2++;
       cambio=MejorRecorrido(1, estacion+1,tiempoant+t[linea][estacion]);
+  }
+    return;
+  }
+    if(linea==0){
+      await sleep(6500);
+      bfs.path[15].addClass('highlighted');
+      
+      await sleep(2000);
+      bfs.path[16].addClass('highlighted');
+      
+    }
+    if(linea==1){
+      await sleep(6500);
+      bfs2.path[15].addClass('highlighted');
+      
+      await sleep(2000);
+      bfs2.path[16].addClass('highlighted');
+      
+    }
+  return;
+}
+function MejorRecorridoN(linea,estacion,tiempoant){
+  tiempoant+=S[linea][estacion];
+  if(estacion < 3){
+    MejorRecorridoN(linea, estacion+1, tiempoant);//Llamada a seguir en la linea
+    if(linea==1){
+      cambio=MejorRecorridoN(0, estacion+1,tiempoant+t[linea][estacion]);
+  }else{
+      cambio=MejorRecorridoN(1, estacion+1,tiempoant+t[linea][estacion]);
   }
     return;
   }
@@ -549,6 +597,8 @@ var obtenerdatos=function () {
     //***************Fin de Recepcion de datos del Código de DP***************************** 
 //*************** Recepcion de datos del Código de FB***************************** 
     var obtenerdatosFB=function () {
+      fbi=0,fbi2=0;
+      cy.elements().remove();
        entradal1 = parseInt(document.getElementById("entradaL1").value);
        nodo1l1 = parseInt(document.getElementById("nodo1-1").value);
        nodo2l1 = parseInt(document.getElementById("nodo1-2").value);
@@ -569,6 +619,42 @@ var obtenerdatos=function () {
        cambio3l2 = parseInt(document.getElementById("cambiol2-l1-3").value);
        salidal2 = parseInt(document.getElementById("salidaL2").value);
   
+       cy.add([
+        { group: 'nodes',data: { id: 'a',label: entradal1},position: {x:0.0,y:0.0}},
+        { group: 'nodes',data: { id: 'b',label: nodo1l1},position: {x:50.0,y:0.0}},
+        { group: 'nodes',data: { id: 'c',label: nodo2l1},position: {x:100.0,y:0.0} },
+        { group: 'nodes',data: { id: 'd',label: nodo3l1},position: {x:150.0,y:0.0} },
+        { group: 'nodes',data: { id: 'e',label: nodo4l1},position: {x:200.0,y:0.0} },
+        { group: 'nodes',data: { id: 'f',label: salidal1},position: {x:250.0,y:0.0}},
+        { group: 'nodes',data: { id: 'g',label: entradal2},position: {x:0.0,y:60.0} },
+        { group: 'nodes',data: { id: 'h',label: nodo1l2},position: {x:50.0,y:60.0} },
+        { group: 'nodes',data: { id: 'i',label: nodo2l2},position: {x:100.0,y:60.0} },
+        { group: 'nodes',data: { id: 'j',label: nodo3l2},position: {x:150.0,y:60.0} },
+        { group: 'nodes',data: { id: 'k',label: nodo4l2},position: {x:200.0,y:60.0} },
+        { group: 'nodes',data: { id: 'l',label: salidal2},position: {x:250.0,y:60.0}},
+        
+    
+        { group: 'edges',data: { id: 'ab', weight: 2, source: 'a', target: 'b' ,label:''} },
+        { group: 'edges',data: { id: 'bc', weight: 2, source: 'b', target: 'c' ,label:''} },
+        { group: 'edges',data: { id: 'cd', weight: 2, source: 'c', target: 'd' ,label:''} },
+        { group: 'edges',data: { id: 'de', weight: 2, source: 'd', target: 'e' ,label:''} },
+        { group: 'edges',data: { id: 'ef', weight: 2, source: 'e', target: 'f' ,label:''} },
+        { group: 'edges',data: { id: 'gh', weight: 2, source: 'g', target: 'h' ,label:''} },
+        { group: 'edges',data: { id: 'hi', weight: 2, source: 'h', target: 'i' ,label:''} },
+        { group: 'edges',data: { id: 'ij', weight: 2, source: 'i', target: 'j' ,label:''} },
+        { group: 'edges',data: { id: 'jk', weight: 2, source: 'j', target: 'k' ,label:''} },
+        { group: 'edges',data: { id: 'kl', weight: 2, source: 'k', target: 'l' ,label:''} },
+        { group: 'edges',data: { id: 'bi', weight: 2, source: 'b', target: 'i' ,label:cambio1l1}},
+        { group: 'edges',data: { id: 'hc', weight: 2, source: 'h', target: 'c' ,label:cambio1l2}},
+        { group: 'edges',data: { id: 'id', weight: 2, source: 'i', target: 'd' ,label:cambio2l2}},
+        { group: 'edges',data: { id: 'cj', weight: 2, source: 'c', target: 'j' ,label:cambio2l1}},
+        { group: 'edges',data: { id: 'je', weight: 2, source: 'j', target: 'e' ,label:cambio3l2}},
+        { group: 'edges',data: { id: 'dk', weight: 2, source: 'd', target: 'k' ,label:cambio3l1}}
+        
+      ]);
+       bfs = cy.elements().bfs('#a', function(){}, true);
+       bfs2 = cy.elements().bfs('#g', function(){}, true);
+
       e=new Array();
       e.push(entradal1);
       e.push(entradal2);
@@ -577,16 +663,12 @@ var obtenerdatos=function () {
       x.push(salidal2);
       S=[[nodo1l1,nodo2l1,nodo3l1,nodo4l1],[nodo1l2,nodo2l2,nodo3l2,nodo4l2]];
       t=[[cambio1l1,cambio2l1,cambio3l1],[cambio1l2,cambio2l2,cambio3l2]];
-      MR=new Array();
+      
       index=0;
       MejorRecorrido(0,0,e[0]);
       MejorRecorrido(1,0,e[1]);
-      /*document.write(S[0]+"<br>");
-      document.write(S[1]+"<br>");
-      document.write(t[0]+"<br>");
-      document.write(t[1]+"<br>");
-      document.write(x+"<br>");
-      document.write(e+"<br>");*/
+      MejorRecorridoN(0,0,e[0]);
+      MejorRecorridoN(1,0,e[1]);
       var min=MR[0];
       for(i=1;i<MR.length;i++){
         if(MR[i]<min){
@@ -594,8 +676,5 @@ var obtenerdatos=function () {
       }
     }
       document.getElementById("resultado").innerHTML = "El Tiempo total del ensamblado es: "+min;
-      //document.write(carAssembleTime(a, t, entrada, salida));
-      //console.log(entradal1+" "+nodo1l1+" "+nodo2l1+" "+nodo3l1+" "+nodo4l1+" "+cambio1l1+" "+cambio2l1+" "+cambio3l1+" "+salidal1+" finl1 ");
-      //console.log(entradal2+" "+nodo1l2+" "+nodo2l2+" "+nodo3l2+" "+nodo4l2+" "+cambio1l2+" "+cambio2l2+" "+cambio3l2+" "+salidal2);
-    }
+      }
     //***************Fin de Recepcion de datos del Código de FB***************************** 
