@@ -549,7 +549,15 @@ async function carAssembleTime(a , t , e , x) {
 //*************** Código de FB***************************** 
 var fbi=0,fbi2=0;
 async function MejorRecorrido(linea,estacion,tiempoant){
+  await sleep(1000);
+  editor.setHighlightActiveLine(true);
+  editor.gotoLine(2);
+  await sleep(1000);
   tiempoant+=S[linea][estacion];
+  await sleep(1000);
+  editor.setHighlightActiveLine(true);
+  editor.gotoLine(3);
+  await sleep(1000);
   if(estacion < 3){
     if(linea==0){
       await sleep(2000);
@@ -561,22 +569,48 @@ async function MejorRecorrido(linea,estacion,tiempoant){
       bfs2.path[fbi2].addClass('highlighted');
       fbi2++;
     }
+    await sleep(1000);
+    editor.setHighlightActiveLine(true);
+    editor.gotoLine(4);
+    await sleep(1000);
     MejorRecorrido(linea, estacion+1, tiempoant);//Llamada a seguir en la linea
+    await sleep(1000);
+    editor.setHighlightActiveLine(true);
+    editor.gotoLine(5);
+    await sleep(1000);
     if(linea==1){
+      await sleep(1000);
+      editor.setHighlightActiveLine(true);
+      editor.gotoLine(6);
       await sleep(2000);
       bfs.path[fbi].addClass('highlighted');
       fbi++;
       cambio=MejorRecorrido(0, estacion+1,tiempoant+t[linea][estacion]);
+      await sleep(1000);
+      editor.setHighlightActiveLine(true);
+      editor.gotoLine(7);
+      await sleep(1000);
   }else{
+    await sleep(1000);
+    editor.setHighlightActiveLine(true);
+    editor.gotoLine(8);
     await sleep(2000);
     bfs2.path[fbi2].addClass('highlighted');
     fbi2++;
       cambio=MejorRecorrido(1, estacion+1,tiempoant+t[linea][estacion]);
+      await sleep(1000);
+      editor.setHighlightActiveLine(true);
+      editor.gotoLine(9);
+      await sleep(1000);
   }
+  await sleep(1000);
+  editor.setHighlightActiveLine(true);
+  editor.gotoLine(11);
+  await sleep(1000);
     return;
   }
     if(linea==0){
-      await sleep(6500);
+      await sleep(8500);
       bfs.path[15].addClass('highlighted');
       
       await sleep(2000);
@@ -584,13 +618,20 @@ async function MejorRecorrido(linea,estacion,tiempoant){
       
     }
     if(linea==1){
-      await sleep(6500);
+      await sleep(8500);
       bfs2.path[15].addClass('highlighted');
       
       await sleep(2000);
       bfs2.path[16].addClass('highlighted');
       
     }
+    await sleep(1000);
+    editor.setHighlightActiveLine(true);
+    editor.gotoLine(13);
+    await sleep(1000);
+    editor.setHighlightActiveLine(true);
+    editor.gotoLine(14);
+    await sleep(1000);
   return;
 }
 function MejorRecorridoN(linea,estacion,tiempoant){
@@ -748,7 +789,7 @@ var obtenerdatos=function () {
       x.push(salidal2);
       S=[[nodo1l1,nodo2l1,nodo3l1,nodo4l1],[nodo1l2,nodo2l2,nodo3l2,nodo4l2]];
       t=[[cambio1l1,cambio2l1,cambio3l1],[cambio1l2,cambio2l2,cambio3l2]];
-      
+
       index=0;
       MejorRecorrido(0,0,e[0]);
       MejorRecorrido(1,0,e[1]);
@@ -766,7 +807,7 @@ var obtenerdatos=function () {
     //***************Fin de Recepcion de datos del Código de FB*****************************
     //***************pintar camino final del Código de FB*****************************  
      async function camnioFB (){
-       await sleep(21500);
+       await sleep(59500);
       cy.elements().remove();
        //await sleep(3000);
       cy.add([
