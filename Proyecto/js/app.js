@@ -193,24 +193,35 @@ var highlightNextEle = function(){
 //highlightNextEle();
 //***************Código de DP***************************** 
 async function carAssembleTime(a , t , e , x) {
+  await sleep(1000);
+  editor.setHighlightActiveLine(true);
+  editor.gotoLine(2);
+  await sleep(1000);
   if(entradal1==entradal2==salidal1==salidal2==nodo1l1==nodo2l1==nodo3l1==nodo4l1==nodo1l2==nodo2l2==nodo3l2==nodo4l2==cambio1l1==cambio2l1==cambio3l1==cambio1l2==cambio2l2==cambio3l2){
     console.log("entro en validar");
     validar();
   }
   var n = a[0].length;//numero de nodos, en este caso son 4
+  await sleep(1000);
+  editor.setHighlightActiveLine(true);
+  editor.gotoLine(3);
+  await sleep(2000);
+  
   // time taken to leave first station in line 1
   var first = e[0] + a[0][0];
- 
 
   // time taken to leave first station in line 2
   var second = e[1] + a[1][0];
-  
+ 
   if(first<second){
     bfs.path[0].addClass('highlighted');
     await sleep(1000);
     setTimeout(bfs.path[1].addClass('highlighted'), 1000); 
     await sleep(1000);
     setTimeout(bfs.path[2].addClass('highlighted'), 1000);
+    await sleep(1000);
+    editor.setHighlightActiveLine(true);
+    editor.gotoLine(5);
     await sleep(1000);
   }
   else{
@@ -219,6 +230,9 @@ async function carAssembleTime(a , t , e , x) {
     setTimeout(bfs2.path[1].addClass('highlighted'), 1000);
     await sleep(1000);
     setTimeout(bfs2.path[2].addClass('highlighted'), 1000);
+    await sleep(1000);
+    editor.setHighlightActiveLine(true);
+    editor.gotoLine(7);
     await sleep(1000);
   }
   if(first==second){
@@ -235,13 +249,23 @@ async function carAssembleTime(a , t , e , x) {
     await sleep(1000);
     setTimeout(bfs2.path[2].addClass('highlighted'), 1000);
     await sleep(1000);
+
+    editor.setHighlightActiveLine(true);
+    editor.gotoLine(5);
+    await sleep(2000);
+    editor.setHighlightActiveLine(true);
+    editor.gotoLine(7);
+    await sleep(1000);
   }
   var iteracionsiguienteUP=new Array();
   var iteracioncambiolinUP=new Array();
   var iteracionsiguienteDOWN=new Array();
   var iteracioncambiolinDOWN=new Array();
 
-
+  await sleep(1000);
+  editor.setHighlightActiveLine(true);
+  editor.gotoLine(9);
+  await sleep(1000);
   for (var i = 1; i < n; i++) {
     var siguienteUP =first + a[0][i];
     var cambiolinUP =second + t[1][i] + a[0][i];
@@ -256,6 +280,10 @@ async function carAssembleTime(a , t , e , x) {
 
       if(i==1){
       if(up<down){
+        await sleep(1000);
+        editor.setHighlightActiveLine(true);
+        editor.gotoLine(10);
+        await sleep(1000);
         if(up==siguienteUP){
           setTimeout(bfs.path[3].addClass('highlighted'), 1000);//bc
           await sleep(1000);
@@ -269,6 +297,10 @@ async function carAssembleTime(a , t , e , x) {
         }
       }
       else{
+        await sleep(1000);
+        editor.setHighlightActiveLine(true);
+        editor.gotoLine(11);
+        await sleep(1000);
         if(down==siguienteDOWN){
           setTimeout(bfs2.path[3].addClass('highlighted'), 1000);//hi
           await sleep(1000);
@@ -288,9 +320,20 @@ async function carAssembleTime(a , t , e , x) {
       iteracioncambiolinUP.push(cambiolinUP);
       iteracionsiguienteDOWN.push(siguienteDOWN);
       iteracioncambiolinDOWN.push(cambiolinDOWN);
+      await sleep(1000);
+      editor.setHighlightActiveLine(true);
+      editor.gotoLine(12);
+      await sleep(1000);
+      editor.setHighlightActiveLine(true);
+      editor.gotoLine(13);
+      await sleep(1000);
     }
     if(i==2){
       if(up<down){
+        await sleep(1000);
+        editor.setHighlightActiveLine(true);
+        editor.gotoLine(10);
+        await sleep(1000);
         if(up==siguienteUP){
           setTimeout(bfs.path[7].addClass('highlighted'), 1000);//cd
           await sleep(1000);
@@ -304,6 +347,10 @@ async function carAssembleTime(a , t , e , x) {
         }
       }
       else{
+        await sleep(1000);
+        editor.setHighlightActiveLine(true);
+        editor.gotoLine(11);
+        await sleep(1000);
         if(down==siguienteDOWN){
           setTimeout(bfs2.path[7].addClass('highlighted'), 1000);//ij
           await sleep(1000);
@@ -323,10 +370,21 @@ async function carAssembleTime(a , t , e , x) {
       iteracioncambiolinUP.push(cambiolinUP);
       iteracionsiguienteDOWN.push(siguienteDOWN);
       iteracioncambiolinDOWN.push(cambiolinDOWN);
+      await sleep(1000);
+      editor.setHighlightActiveLine(true);
+      editor.gotoLine(12);
+      await sleep(1000);
+      editor.setHighlightActiveLine(true);
+      editor.gotoLine(13);
+      await sleep(1000);
     }
 
     if(i==3){
       if(up<down){
+        await sleep(1000);
+        editor.setHighlightActiveLine(true);
+        editor.gotoLine(10);
+        await sleep(1000);
         if(up==siguienteUP){
           setTimeout(bfs.path[11].addClass('highlighted'), 1000);//de
           await sleep(1000);
@@ -340,6 +398,10 @@ async function carAssembleTime(a , t , e , x) {
         }
       }
       else{
+        await sleep(1000);
+        editor.setHighlightActiveLine(true);
+        editor.gotoLine(11);
+        await sleep(1000);
         if(down==siguienteDOWN){
           setTimeout(bfs2.path[11].addClass('highlighted'), 1000);//jk
           await sleep(1000);
@@ -359,6 +421,13 @@ async function carAssembleTime(a , t , e , x) {
       iteracioncambiolinUP.push(cambiolinUP);
       iteracionsiguienteDOWN.push(siguienteDOWN);
       iteracioncambiolinDOWN.push(cambiolinDOWN);
+      await sleep(1000);
+      editor.setHighlightActiveLine(true);
+      editor.gotoLine(12);
+      await sleep(1000);
+      editor.setHighlightActiveLine(true);
+      editor.gotoLine(13);
+      await sleep(1000);
     }
   }
 
@@ -368,8 +437,15 @@ async function carAssembleTime(a , t , e , x) {
     console.log("siguienteDOWN:"+iteracionsiguienteDOWN[i]);
     console.log("cambiolinDOWN:"+iteracioncambiolinDOWN[i]);
   }
-
+  await sleep(1000);
+  editor.setHighlightActiveLine(true);
+  editor.gotoLine(15);
+  await sleep(1000);
   first += x[0];
+  await sleep(1000);
+  editor.setHighlightActiveLine(true);
+  editor.gotoLine(16);
+  await sleep(1000);
   second += x[1];
   var final = Math.min(first,second);
   var reacomodo,reacomodo2;
@@ -464,6 +540,9 @@ async function carAssembleTime(a , t , e , x) {
     await sleep(1000);
   }
   //return final;
+  await sleep(1000);
+  editor.setHighlightActiveLine(true);
+  editor.gotoLine(17);
   document.getElementById("resultado").innerHTML = "El Tiempo total del ensamblado es: "+final;
   }
 //***************Fin Código de DP***************************** 

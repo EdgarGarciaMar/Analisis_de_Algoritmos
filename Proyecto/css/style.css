@@ -19,6 +19,11 @@ body {
   background-color: #ffffff;
   float: right;
 }
+#editor {
+  border: 2px solid white;
+  margin: 10px;
+  padding: 5px;
+}
 /*Medias responsivas 1-2-3 columnas*/
 @media only screen and (max-width: 500px) {
   /*Form de datos responsivo*/
@@ -92,10 +97,17 @@ body {
   }
   #cy {
     /*original*/
-    height: 70%;
+    height: 35%;
     width: 50%;
     position: absolute;
     left: 36%;
     top: 100px;
+  }
+  #editor {
+    position: absolute;
+    top: 500px;
+    height: 44%;
+    width: 45%;
+    left: 45%;
   }
 }
