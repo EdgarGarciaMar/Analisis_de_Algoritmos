@@ -378,5 +378,42 @@
     <div id="cy"></div>
     <script src="/js/app.js"></script>
     <!--Fin simulación-->
+    <!--Codigo dinamico-->
+    <div id="editor">
+      function MejorRecorridoN(linea,estacion,tiempoant){<br />
+      tiempoant+=S[linea][estacion];<br />
+      if(estacion < 3){<br />
+      MejorRecorridoN(linea, estacion+1, tiempoant);<br />
+      if(linea==1){<br />
+      cambio=MejorRecorridoN(0, estacion+1,tiempoant+t[linea][estacion]);<br />
+      }else{<br />
+      cambio=MejorRecorridoN(1, estacion+1,tiempoant+t[linea][estacion]);<br />
+      }<br />
+      return;<br />
+      }<br />
+      MR.push(tiempoant+x[linea]);<br />
+      return;<br />
+      }<br />
+
+      camnioFB (){<br />
+      min=MR[0];<br />
+      for(i=1;i<"MR.length";i++){<br />
+      if(MR[i]<"min"){<br />
+      min=MR[i];<br />
+      }<br />
+      }<br />
+      }
+    </div>
+
+    <script
+      src="/ace-builds-master/src-noconflict/ace.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script>
+      var editor = ace.edit("editor");
+      editor.setTheme("ace/theme/clouds");
+      editor.session.setMode("ace/mode/javascript");
+    </script>
   </body>
 </html>
