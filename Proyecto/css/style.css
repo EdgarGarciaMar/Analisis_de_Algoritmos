@@ -44,11 +44,19 @@ body {
   #cy {
     /*original*/
     height: 60%;
-    width: 65%;
+    width: 96%;
     position: absolute;
-    left: 10px;
-    right: 30px;
+    margin: 10px;
+    padding: 5px;
+    top: 2050px;
+  }
+  #editor {
+    position: absolute;
     top: 1700px;
+    height: 50%;
+    width: 96%;
+    margin: 10px;
+    padding: 5px;
   }
 }
 @media only screen and (min-width: 501px) and (max-width: 900px) {
@@ -70,11 +78,19 @@ body {
   #cy {
     /*original*/
     height: 60%;
-    width: 71%;
+    width: 97%;
     position: absolute;
-    left: 5px;
-    right: 30px;
-    top: 1700;
+    margin: 10px;
+    padding: 5px;
+    top: 2000px;
+  }
+  #editor {
+    position: absolute;
+    top: 1700px;
+    height: 44%;
+    width: 98%;
+    margin: 10px;
+    padding: 5px;
   }
 }
 @media only screen and (min-width: 901px) {
