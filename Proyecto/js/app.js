@@ -19,7 +19,7 @@ var cambio3l2 = parseInt(document.getElementById("cambiol2-l1-3").value);
 var salidal2 = parseInt(document.getElementById("salidaL2").value);//l
 
 MR=new Array();
-
+var min=0;
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -527,6 +527,7 @@ function MejorRecorridoN(linea,estacion,tiempoant){
 //***************Fin Código de FB***************************** 
 //***************Recepcion de datos del Código de DP***************************** 
 var obtenerdatos=function () {
+  document.getElementById("resultado").innerHTML = "El Tiempo total del ensamblado es: "+0;
   cy.elements().remove();
    entradal1 = parseInt(document.getElementById("entradaL1").value);//a
    nodo1l1 = parseInt(document.getElementById("nodo1-1").value);//b
@@ -597,6 +598,7 @@ var obtenerdatos=function () {
     //***************Fin de Recepcion de datos del Código de DP***************************** 
 //*************** Recepcion de datos del Código de FB***************************** 
     var obtenerdatosFB=function () {
+      document.getElementById("resultado").innerHTML = "El Tiempo total del ensamblado es: "+0;
       fbi=0,fbi2=0;
       cy.elements().remove();
        entradal1 = parseInt(document.getElementById("entradaL1").value);
@@ -669,12 +671,68 @@ var obtenerdatos=function () {
       MejorRecorrido(1,0,e[1]);
       MejorRecorridoN(0,0,e[0]);
       MejorRecorridoN(1,0,e[1]);
-      var min=MR[0];
+      min=MR[0];
       for(i=1;i<MR.length;i++){
         if(MR[i]<min){
         min=MR[i];
       }
     }
-      document.getElementById("resultado").innerHTML = "El Tiempo total del ensamblado es: "+min;
+      camnioFB ();
+      
       }
-    //***************Fin de Recepcion de datos del Código de FB***************************** 
+    //***************Fin de Recepcion de datos del Código de FB*****************************
+    //***************pintar camino final del Código de FB*****************************  
+     async function camnioFB (){
+       await sleep(21500);
+      cy.elements().remove();
+       //await sleep(3000);
+      cy.add([
+        { group: 'nodes',data: { id: 'a',label: entradal1},position: {x:0.0,y:0.0}},
+        { group: 'nodes',data: { id: 'b',label: nodo1l1},position: {x:50.0,y:0.0}},
+        { group: 'nodes',data: { id: 'c',label: nodo2l1},position: {x:100.0,y:0.0} },
+        { group: 'nodes',data: { id: 'd',label: nodo3l1},position: {x:150.0,y:0.0} },
+        { group: 'nodes',data: { id: 'e',label: nodo4l1},position: {x:200.0,y:0.0} },
+        { group: 'nodes',data: { id: 'f',label: salidal1},position: {x:250.0,y:0.0}},
+        { group: 'nodes',data: { id: 'g',label: entradal2},position: {x:0.0,y:60.0} },
+        { group: 'nodes',data: { id: 'h',label: nodo1l2},position: {x:50.0,y:60.0} },
+        { group: 'nodes',data: { id: 'i',label: nodo2l2},position: {x:100.0,y:60.0} },
+        { group: 'nodes',data: { id: 'j',label: nodo3l2},position: {x:150.0,y:60.0} },
+        { group: 'nodes',data: { id: 'k',label: nodo4l2},position: {x:200.0,y:60.0} },
+        { group: 'nodes',data: { id: 'l',label: salidal2},position: {x:250.0,y:60.0}},
+        
+    
+        { group: 'edges',data: { id: 'ab', weight: 2, source: 'a', target: 'b' ,label:''} },
+        { group: 'edges',data: { id: 'bc', weight: 2, source: 'b', target: 'c' ,label:''} },
+        { group: 'edges',data: { id: 'cd', weight: 2, source: 'c', target: 'd' ,label:''} },
+        { group: 'edges',data: { id: 'de', weight: 2, source: 'd', target: 'e' ,label:''} },
+        { group: 'edges',data: { id: 'ef', weight: 2, source: 'e', target: 'f' ,label:''} },
+        { group: 'edges',data: { id: 'gh', weight: 2, source: 'g', target: 'h' ,label:''} },
+        { group: 'edges',data: { id: 'hi', weight: 2, source: 'h', target: 'i' ,label:''} },
+        { group: 'edges',data: { id: 'ij', weight: 2, source: 'i', target: 'j' ,label:''} },
+        { group: 'edges',data: { id: 'jk', weight: 2, source: 'j', target: 'k' ,label:''} },
+        { group: 'edges',data: { id: 'kl', weight: 2, source: 'k', target: 'l' ,label:''} },
+        { group: 'edges',data: { id: 'bi', weight: 2, source: 'b', target: 'i' ,label:cambio1l1}},
+        { group: 'edges',data: { id: 'hc', weight: 2, source: 'h', target: 'c' ,label:cambio1l2}},
+        { group: 'edges',data: { id: 'id', weight: 2, source: 'i', target: 'd' ,label:cambio2l2}},
+        { group: 'edges',data: { id: 'cj', weight: 2, source: 'c', target: 'j' ,label:cambio2l1}},
+        { group: 'edges',data: { id: 'je', weight: 2, source: 'j', target: 'e' ,label:cambio3l2}},
+        { group: 'edges',data: { id: 'dk', weight: 2, source: 'd', target: 'k' ,label:cambio3l1}}
+        
+      ]);
+       bfs = cy.elements().bfs('#a', function(){}, true);
+       bfs2 = cy.elements().bfs('#g', function(){}, true);
+  
+       var entrada=new Array();
+       entrada.push(entradal1);
+       entrada.push(entradal2);
+       var salida= new Array();
+       salida.push(salidal1);
+       salida.push(salidal2);
+   
+       var a=[[nodo1l1,nodo2l1,nodo3l1,nodo4l1],[nodo1l2,nodo2l2,nodo3l2,nodo4l2]];
+       var t=[[0,cambio1l1,cambio2l1,cambio3l1],[0,cambio1l2,cambio2l2,cambio3l2]];
+       carAssembleTime(a, t, entrada, salida);
+       //await sleep(3000);
+       //document.getElementById("resultado").innerHTML = "El Tiempo total del ensamblado es: "+min;
+     }
+     //***************Fin de pintar camino del Código de FB***************************** 
